@@ -14,6 +14,8 @@ export const Nav = styled.div`
 `;
 
 export const NavItem = styled.div`
+    font-family: "SF-Pro";
+    font-weight: 500;
     cursor: pointer;
     font-size: 10px;
     display: flex;
