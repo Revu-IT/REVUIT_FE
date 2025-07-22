@@ -24,7 +24,6 @@ export const Title = styled.div`
     line-height: 22px;
     color: #000000;
     font-family: "SF Pro";
-    font-stretch: expanded;
     font-weight: 600;
 `;
 

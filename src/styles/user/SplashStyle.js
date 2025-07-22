@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Background = styled.div`
+export const Splash = styled.div`
     background-color: #007aff;
     height: 100vh;
     display: flex;

@@ -20,9 +20,9 @@ function Splash() {
             <C.Page>
                 <C.Center>
                     <C.PageSpace>
-                        <S.Background>
+                        <S.Splash>
                             <S.Logo src={logo} alt="revuit" />
-                        </S.Background>
+                        </S.Splash>
                     </C.PageSpace>
                 </C.Center>
             </C.Page>
