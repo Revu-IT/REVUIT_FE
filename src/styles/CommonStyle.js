@@ -22,7 +22,6 @@ export const PageSpace = styled.div`
         width: 360px;
     }
 `;
-
 export const FixedHeaderWrapper = styled.div`
     position: fixed;
     top: 0;
