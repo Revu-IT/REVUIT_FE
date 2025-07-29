@@ -1,27 +1,15 @@
-<svg width="283" height="326" viewBox="0 0 283 326" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g filter="url(#filter0_d_449_2398)">
-<mask id="mask0_449_2398" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="10" y="6" width="263" height="306">
-<path d="M10 22C10 13.1634 17.1634 6 26 6H257C265.837 6 273 13.1634 273 22V312H10V22Z" fill="url(#paint0_linear_449_2398)"/>
+<svg width="263" height="306" viewBox="0 0 263 306" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<mask id="mask0_449_2398" style="mask-type:alpha" maskUnits="userSpaceOnUse" x="0" y="0" width="263" height="306">
+<path d="M0 16C0 7.16344 7.16344 0 16 0H247C255.837 0 263 7.16344 263 16V306H0V16Z" fill="url(#paint0_linear_449_2398)"/>
 </mask>
 <g mask="url(#mask0_449_2398)">
-<rect x="10" y="6" width="263" height="895" fill="url(#pattern0_449_2398)"/>
-</g>
+<rect width="263" height="895" fill="url(#pattern0_449_2398)"/>
 </g>
 <defs>
-<filter id="filter0_d_449_2398" x="0" y="0" width="283" height="326" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset dy="4"/>
-<feGaussianBlur stdDeviation="5"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.1 0"/>
-<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_449_2398"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_449_2398" result="shape"/>
-</filter>
 <pattern id="pattern0_449_2398" patternContentUnits="objectBoundingBox" width="1" height="1">
 <use xlink:href="#image0_449_2398" transform="scale(0.0024876 0.000730994)"/>
 </pattern>
-<linearGradient id="paint0_linear_449_2398" x1="141.5" y1="6" x2="141.5" y2="312" gradientUnits="userSpaceOnUse">
+<linearGradient id="paint0_linear_449_2398" x1="131.5" y1="0" x2="131.5" y2="306" gradientUnits="userSpaceOnUse">
 <stop offset="0.68" stop-color="#D9D9D9"/>
 <stop offset="0.942308" stop-color="#737373" stop-opacity="0"/>
 </linearGradient>
