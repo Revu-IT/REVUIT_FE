@@ -1,4 +1,5 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import * as C from "../../styles/CommonStyle";
 import * as D from "../../styles/DepartmentHelpStyle";
 
@@ -8,6 +9,12 @@ import example1 from "../../assets/images/department_example1.svg";
 import example2 from "../../assets/images/department_example2.svg";
 
 function DepartmentHelp() {
+    const navigate = useNavigate();
+
+    const handleDepartment = () => {
+        navigate(-1);
+    };
+
     return (
         <>
             <C.Page bg="#f3f4f7">
@@ -17,8 +24,8 @@ function DepartmentHelp() {
                         <D.Help>
                             <D.Container>
                                 <D.Title>
-                                    이 리뷰의 <span>담당 부서</span>가
-                                    궁금하다고요?{" "}
+                                    이 리뷰의 <span>담당 부서</span>가<br></br>
+                                    궁금하다고요?
                                 </D.Title>
                                 <D.Desc>
                                     원활한 CS 관리를 위해 AI가 분류했어요.
@@ -51,7 +58,7 @@ function DepartmentHelp() {
                                     width="263px"
                                 />
                             </D.Container>
-                            <D.DepartmentButton>
+                            <D.DepartmentButton onClick={handleDepartment}>
                                 리뷰 확인하러 가기
                             </D.DepartmentButton>
                         </D.Help>

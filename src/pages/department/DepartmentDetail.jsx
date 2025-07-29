@@ -16,16 +16,18 @@ function DepartmentDetail() {
             <C.Page>
                 <C.Center>
                     <C.PageSpace>
-                        <Header
-                            Title="부서 분류"
-                            HelpContent={
-                                <img
-                                    src={help}
-                                    alt="도움말"
-                                    onClick={handleHelp}
-                                />
-                            }
-                        />
+                        <C.FixedHeaderWrapper>
+                            <Header
+                                Title="부서 분류"
+                                HelpContent={
+                                    <img
+                                        src={help}
+                                        alt="도움말"
+                                        onClick={handleHelp}
+                                    />
+                                }
+                            />
+                        </C.FixedHeaderWrapper>
                         <h1>부서 분류</h1>
                     </C.PageSpace>
                 </C.Center>
