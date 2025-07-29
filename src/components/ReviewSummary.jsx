@@ -32,6 +32,27 @@ function ReviewSummary() {
                     <R.Count>{count}개</R.Count>
                 </R.BackgroundBar>
             </R.BarContainer>
+            <R.BarContainer>
+                <R.BackgroundBar>
+                    <R.progressBar width={width} isPositive={false}>
+                        <R.BarText visible={textVisible}>
+                            광고가 너무 자주 떠요
+                        </R.BarText>
+                    </R.progressBar>
+                    <R.Count>{count}개</R.Count>
+                </R.BackgroundBar>
+            </R.BarContainer>
+
+            <R.BarContainer>
+                <R.BackgroundBar>
+                    <R.progressBar width={width} isPositive={true}>
+                        <R.BarText visible={textVisible}>
+                            최저가 상품을 한 눈에 볼 수 있어서 좋아요
+                        </R.BarText>
+                    </R.progressBar>
+                    <R.Count>{count}개</R.Count>
+                </R.BackgroundBar>
+            </R.BarContainer>
 
             <R.BarContainer>
                 <R.BackgroundBar>

@@ -1,6 +1,7 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as C from "../../styles/CommonStyle";
+import * as D from "../../styles/DepartmentDetailStyle";
 import ReviewCard from "../../components/ReviewCard";
 import ReviewSummary from "../../components/ReviewSummary";
 
@@ -12,6 +13,16 @@ function DepartmentDetail() {
 
     const handleHelp = () => {
         navigate("/department/help");
+    };
+    const title = "program management";
+
+    const renderTitle = (text) => {
+        return text.split(" ").map((word, index) => (
+            <div key={index}>
+                <span style={{ color: "#007bff" }}>{word.charAt(0)}</span>
+                {word.slice(1)}
+            </div>
+        ));
     };
     return (
         <>
@@ -30,8 +41,18 @@ function DepartmentDetail() {
                                 }
                             />
                         </C.FixedHeaderWrapper>
-                        <ReviewSummary />
-                        <ReviewCard />
+                        <D.Detail>
+                            <D.title>{renderTitle(title)}</D.title>
+                            <ReviewSummary />
+                            <D.Line></D.Line>
+                            <D.Container>
+                                <ReviewCard />
+                                <ReviewCard />
+                                <ReviewCard />
+                                <ReviewCard />
+                                <ReviewCard />
+                            </D.Container>
+                        </D.Detail>
                     </C.PageSpace>
                 </C.Center>
             </C.Page>
