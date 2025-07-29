@@ -45,13 +45,7 @@ function DepartmentDetail() {
                             <D.title>{renderTitle(title)}</D.title>
                             <ReviewSummary />
                             <D.Line></D.Line>
-                            <D.Container>
-                                <ReviewCard />
-                                <ReviewCard />
-                                <ReviewCard />
-                                <ReviewCard />
-                                <ReviewCard />
-                            </D.Container>
+                            <ReviewCard />
                         </D.Detail>
                     </C.PageSpace>
                 </C.Center>

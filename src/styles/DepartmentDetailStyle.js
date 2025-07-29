@@ -27,10 +27,3 @@ export const Line = styled.div`
     background-color: #f3f4f7;
     height: 3px;
 `;
-
-export const Container = styled.div`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 24px 0;
-`;
