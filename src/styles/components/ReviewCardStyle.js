@@ -4,6 +4,13 @@ export const ReviewCard = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 24px 0;
+`;
+
+export const Container = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     box-sizing: border-box;
     width: 100%;
     padding: 18px 24px 8px 24px;

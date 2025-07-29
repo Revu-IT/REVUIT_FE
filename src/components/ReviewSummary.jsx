@@ -53,7 +53,6 @@ function ReviewSummary() {
                     <R.Count>{count}개</R.Count>
                 </R.BackgroundBar>
             </R.BarContainer>
-
             <R.BarContainer>
                 <R.BackgroundBar>
                     <R.progressBar width={width} isPositive={true}>
