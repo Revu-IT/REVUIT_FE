@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import * as C from "../../styles/CommonStyle";
 import * as M from "../../styles/MonthlyReportStyle";
 
@@ -6,8 +6,10 @@ import Header from "../../components/HeaderBack";
 import ReviewSummary from "../../components/ReviewSummary";
 
 import light from "../../assets/images/light.svg";
+import SentimentTabs from "../../components/SentimentTabs";
 
 function MonthlyReport() {
+    const [sentiment, setSentiment] = useState("positive");
     return (
         <>
             <C.Page bg="#f3f4f7">
