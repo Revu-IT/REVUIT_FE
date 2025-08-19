@@ -8,7 +8,7 @@ function TotalReview({ companyInfo, totalCount = 0 }) {
         <T.Total>
             <T.Title>
                 {companyInfo?.logo && <T.Logo src={companyInfo.logo} />}
-                {companyInfo?.display ?? "회사"} 총 리뷰
+                {companyInfo?.display ?? "내 회사"} 총 리뷰
             </T.Title>
             <T.Content>
                 <T.Img src={total} /> {Number(totalCount).toLocaleString()}
