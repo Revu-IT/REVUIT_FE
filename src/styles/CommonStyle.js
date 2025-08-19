@@ -4,7 +4,7 @@ export const Page = styled.div`
     width: 100vw;
     overflow-y: scroll;
     overflow-x: hidden;
-    /* background-color: #000000; */
+    background-color: ${(props) => props.bg || "#ffffff"};
 `;
 
 export const Center = styled.div`
