@@ -23,7 +23,7 @@ export const Container = styled.div`
 
 export const Content = styled.div`
     font-weight: 400;
-    text-align: left;
+    align-self: flex-start;
     font-size: 12px;
     color: #000000;
     font-family: "SF Pro";

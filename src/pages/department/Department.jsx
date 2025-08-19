@@ -5,6 +5,8 @@ import * as D from "../../styles/DepartmentStyle";
 
 import Header from "../../components/Header";
 import help from "../../assets/images/questionmark.svg";
+import { DEPARTMENTS } from "../../utils/departmentsMap";
+import useRenderTitle from "../../hooks/useRenderTitle";
 
 function Department() {
     const navigate = useNavigate();
@@ -13,16 +15,11 @@ function Department() {
         navigate("/department/help");
     };
 
-    const title = "program management";
+    const renderTitle = useRenderTitle({
+        ampSize: 24,
+        nonBreakBigrams: [["Seller", "Support"]],
+    });
 
-    const renderTitle = (text) => {
-        return text.split(" ").map((word, index) => (
-            <div key={index}>
-                <span style={{ color: "#007bff" }}>{word.charAt(0)}</span>
-                {word.slice(1)}
-            </div>
-        ));
-    };
     return (
         <>
             <C.Page>
@@ -42,35 +39,27 @@ function Department() {
                         </C.FixedHeaderWrapper>
 
                         <D.Department>
-                            <D.Card>
-                                <D.Title>{renderTitle(title)}</D.Title>
-                                <D.Desc>
-                                    사회에 영향을 미치는 다양한 문제를 다루며,
-                                    이를 통해 지속적인 성장과 글로벌 확장을
-                                    이끌고 있어요
-                                </D.Desc>
-                                <D.ReviewButton>리뷰 바로가기 →</D.ReviewButton>
-                            </D.Card>
+                            {DEPARTMENTS.map((dept) => (
+                                <D.Card key={dept.id}>
+                                    <D.Title>
+                                        {typeof renderTitle === "function"
+                                            ? renderTitle(dept.en)
+                                            : dept.en}
+                                    </D.Title>
 
-                            <D.Card>
-                                <D.Title>{renderTitle(title)}</D.Title>
-                                <D.Desc>
-                                    사회에 영향을 미치는 다양한 문제를 다루며,
-                                    이를 통해 지속적인 성장과 글로벌 확장을
-                                    이끌고 있어요
-                                </D.Desc>
-                                <D.ReviewButton>리뷰 바로가기 →</D.ReviewButton>
-                            </D.Card>
+                                    <D.Desc>{dept.desc}</D.Desc>
 
-                            <D.Card>
-                                <D.Title>{renderTitle(title)}</D.Title>
-                                <D.Desc>
-                                    사회에 영향을 미치는 다양한 문제를 다루며,
-                                    이를 통해 지속적인 성장과 글로벌 확장을
-                                    이끌고 있어요
-                                </D.Desc>
-                                <D.ReviewButton>리뷰 바로가기 →</D.ReviewButton>
-                            </D.Card>
+                                    <D.ReviewButton
+                                        onClick={() =>
+                                            navigate(
+                                                `/department/${dept.id}/detail`
+                                            )
+                                        }
+                                    >
+                                        리뷰 바로가기 →
+                                    </D.ReviewButton>
+                                </D.Card>
+                            ))}
                         </D.Department>
                     </C.PageSpace>
                 </C.Center>

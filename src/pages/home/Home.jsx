@@ -57,12 +57,12 @@ function Home() {
                         />
 
                         {loading ? (
-                            <H.StatusCard>
-                                <H.Spinner />
+                            <C.StatusCard>
+                                <C.Spinner />
                                 데이터 불러오는 중…
-                            </H.StatusCard>
+                            </C.StatusCard>
                         ) : error ? (
-                            <H.ErrorCard>{error}</H.ErrorCard>
+                            <C.ErrorCard>{error}</C.ErrorCard>
                         ) : (
                             <Graph
                                 title={`${year} 리뷰 평점 추이`}
