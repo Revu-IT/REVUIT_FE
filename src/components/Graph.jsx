@@ -11,11 +11,12 @@ import {
 } from "recharts";
 import * as G from "../styles/components/GraphStyle";
 
-const MY_COLOR = "#007aff"; // 쿠팡 (파랑)
-const INDUSTRY_COLOR = "#F5BF28"; // 업계 평균 (노랑)
+const MY_COLOR = "#007aff";
+const INDUSTRY_COLOR = "#F5BF28";
 
-export default function Graph({ title = "2025 리뷰 평점 추이", data = [] }) {
+export default function Graph({ title = "", data = [], companyInfo = null }) {
     const hasData = Array.isArray(data) && data.length > 0;
+    const companyLabel = companyInfo?.display ?? "내 회사";
 
     return (
         <G.Card>
@@ -24,7 +25,7 @@ export default function Graph({ title = "2025 리뷰 평점 추이", data = [] }
                 <G.Legend>
                     <G.LegendItem style={{ color: "#007aff" }}>
                         <G.Dot style={{ background: MY_COLOR }} />
-                        쿠팡
+                        {companyLabel}
                     </G.LegendItem>
                     <G.LegendItem style={{ color: "#F5BF28" }}>
                         <G.Dot style={{ background: INDUSTRY_COLOR }} />
@@ -69,7 +70,7 @@ export default function Graph({ title = "2025 리뷰 평점 추이", data = [] }
                             <Line
                                 type="monotone"
                                 dataKey="my"
-                                name="쿠팡"
+                                name={companyLabel}
                                 stroke={MY_COLOR}
                                 strokeWidth={3}
                                 dot={{ r: 3 }}

@@ -22,6 +22,7 @@ function Home() {
     const [companyInfo, setCompanyInfo] = useState(null);
     const [totalCount, setTotalCount] = useState(0);
     const [chartData, setChartData] = useState([]);
+    const [year, setYear] = useState(new Date().getFullYear());
 
     useEffect(() => {
         (async () => {
@@ -34,6 +35,7 @@ function Home() {
                 setChartData(
                     toChartData(data.my_company_monthly_avg, data.industry_avg)
                 );
+                setYear(data.year ?? new Date().getFullYear());
             } catch (e) {
                 console.error(e);
                 setError("통계를 불러오지 못했습니다.");
@@ -55,17 +57,17 @@ function Home() {
                         />
 
                         {loading ? (
-                            <div style={{ padding: 16 }}>로딩 중…</div>
+                            <H.StatusCard>
+                                <H.Spinner />
+                                데이터 불러오는 중…
+                            </H.StatusCard>
                         ) : error ? (
-                            <div style={{ color: "red", padding: 16 }}>
-                                {error}
-                            </div>
+                            <H.ErrorCard>{error}</H.ErrorCard>
                         ) : (
                             <Graph
-                                title={`${
-                                    companyInfo?.display ?? "회사"
-                                } 2025 리뷰 평점 추이`}
+                                title={`${year} 리뷰 평점 추이`}
                                 data={chartData}
+                                companyInfo={companyInfo}
                             />
                         )}
                         <H.Monthly>
@@ -74,7 +76,7 @@ function Home() {
                             >
                                 분기별 리포트 <H.More src={more} />
                             </H.Title>
-                            {/* <ReportCard sentiment={MOCK_SENTIMENT} /> */}
+                            {/* <ReportCard sentiment={MOCK_SENTIMENT} companyInfo={companyInfo}/> */}
                         </H.Monthly>
 
                         <H.Monthly style={{ marginBottom: "101px" }}>
@@ -83,7 +85,7 @@ function Home() {
                             >
                                 분기별 키워드 <H.More src={more} />
                             </H.Title>
-                            <KeywordCard />
+                            <KeywordCard companyInfo={companyInfo} />
                         </H.Monthly>
                     </H.Home>
                 </C.PageSpace>
