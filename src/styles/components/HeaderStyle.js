@@ -25,6 +25,7 @@ export const Title = styled.div`
     color: #000000;
     font-family: "SF Pro";
     font-stretch: expanded;
+    font-weight: 600;
 `;
 
 export const Help = styled.div`
