@@ -1,4 +1,3 @@
-// src/pages/department/DepartmentDetail.jsx
 import React, { useEffect, useMemo, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import * as C from "../../styles/CommonStyle";
@@ -23,12 +22,13 @@ function DepartmentDetail() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
-    // ★ 유즈파람 id로 부서 메타 찾기 (en 제목 사용)
+    const totalCount = useMemo(() => reviews.length, [reviews]);
+
     const deptMeta = useMemo(
         () => DEPARTMENTS.find((d) => d.id === departmentId),
         [departmentId]
     );
-    const titleEn = deptMeta?.en ?? ""; // "Program Management" 등
+    const titleEn = deptMeta?.en ?? "";
 
     const renderTitle = useRenderTitle({
         ampSize: 24,
@@ -76,14 +76,14 @@ function DepartmentDetail() {
                     </C.FixedHeaderWrapper>
 
                     <D.Detail>
-                        {/* ★ 타이틀: DEPARTMENTS의 en 사용 */}
                         <D.title>
                             {titleEn ? renderTitle(titleEn) : "Department"}
                         </D.title>
 
-                        {/* 요약 바: id로 호출 */}
-                        <ReviewSummary departmentId={departmentId} />
-
+                        <ReviewSummary
+                            departmentId={departmentId}
+                            totalCount={totalCount}
+                        />
                         <D.Line />
 
                         {loading ? (
@@ -94,7 +94,9 @@ function DepartmentDetail() {
                         ) : error ? (
                             <C.ErrorCard>{error}</C.ErrorCard>
                         ) : (
-                            <ReviewCard reviews={reviews} />
+                            <>
+                                <ReviewCard reviews={reviews} />
+                            </>
                         )}
                     </D.Detail>
                 </C.PageSpace>

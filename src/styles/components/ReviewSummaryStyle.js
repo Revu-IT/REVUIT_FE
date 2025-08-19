@@ -22,17 +22,14 @@ export const BackgroundBar = styled.div`
     overflow: hidden;
     display: flex;
     align-items: center;
+    position: relative;
 `;
 
 export const progressBar = styled.div`
     background-color: ${(props) => (props.isPositive ? "#11bc3c" : "#f5bf28")};
     width: ${(props) => props.width}%;
     height: 100%;
-    color: white;
-    font-weight: 600;
-    font-size: 12px;
     padding-left: 12px;
-    font-family: "SF Pro";
     display: flex;
     align-items: center;
     border-radius: 8px;
@@ -41,13 +38,21 @@ export const progressBar = styled.div`
     position: relative;
 `;
 
-export const BarText = styled.span`
-    color: white;
+export const BarText = styled.div`
+    color: #ffffff;
+    font-weight: 600;
+    font-size: 12px;
+    font-family: "SF Pro";
+    margin-left: 10px;
+    margin-right: auto;
+    text-align: left;
     opacity: ${(props) => (props.visible ? 1 : 0)};
     transform: ${(props) =>
         props.visible ? "translateX(0)" : "translateX(-10px)"};
     transition: opacity 1s ease, transform 1s ease;
     white-space: nowrap;
+    z-index: 2;
+    position: absolute;
 `;
 
 export const Count = styled.div`
@@ -57,6 +62,7 @@ export const Count = styled.div`
     text-align: right;
     font-family: "SF Pro";
     font-weight: 500;
-    margin-right: 12px;
-    margin-left: auto;
+    right: 10px;
+    z-index: 2;
+    position: absolute;
 `;
