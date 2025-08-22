@@ -12,4 +12,10 @@ export const getMainReport = async () => {
     return data;
 };
 
-export default { getStatistics, getMainReport };
+// 분기별 키워드
+export const getMainKeyword = async () => {
+    const { data } = await api.get("/analyze/keywords/quarterly");
+    return data;
+};
+
+export default { getStatistics, getMainReport, getMainKeyword };

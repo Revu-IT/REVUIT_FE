@@ -14,5 +14,5 @@ export const removeCookie = (name) => {
 };
 
 // 프로젝트에서 쓰는 이름 그대로 사용
-export const getAccessToken = () => getCookie("accessToken"); // 예: "Bearer xxxxx"
-export const getRefreshToken = () => getCookie("refreshToken"); // 값만(접두사 없이)
+export const getAccessToken = () => getCookie("accessToken");
+export const getRefreshToken = () => getCookie("refreshToken");

@@ -12,7 +12,7 @@ import more from "../../assets/images/chevron_right.svg";
 
 import { companyMap } from "../../utils/companyMap";
 import { toChartData } from "../../utils/transformStatistics";
-import { getStatistics, getMainReport } from "../../axios/home";
+import { getStatistics, getMainReport, getMainKeyword } from "../../axios/home";
 
 function Home() {
     const navigate = useNavigate();
@@ -29,6 +29,11 @@ function Home() {
     const [summaryLoading, setSummaryLoading] = useState(true);
     const [summaryError, setSummaryError] = useState("");
     const [summaryData, setSummaryData] = useState(null);
+
+    // 키워드
+    const [keywordLoading, setKeywordLoading] = useState(true);
+    const [keywordError, setKeywordError] = useState("");
+    const [keywordData, setKeywordData] = useState({ data: [] });
 
     // 통계 불러오기
     useEffect(() => {
@@ -80,6 +85,28 @@ function Home() {
                 setSummaryLoading(false);
             }
         })();
+    }, []);
+
+    // 분기별 키워드 불러오기
+    useEffect(() => {
+        let aborted = false;
+        (async () => {
+            try {
+                setKeywordLoading(true);
+                setKeywordError("");
+
+                const data = await getMainKeyword();
+                if (!aborted) setKeywordData(data);
+            } catch (e) {
+                console.error(e);
+                if (!aborted) setKeywordError("키워드를 불러오지 못했습니다.");
+            } finally {
+                if (!aborted) setKeywordLoading(false);
+            }
+        })();
+        return () => {
+            aborted = true;
+        };
     }, []);
 
     return (
@@ -136,7 +163,18 @@ function Home() {
                             >
                                 분기별 키워드 <H.More src={more} />
                             </H.Title>
-                            <KeywordCard companyInfo={companyInfo} />
+                            {keywordLoading ? (
+                                <C.StatusCard>
+                                    <C.Spinner /> 키워드 불러오는 중…
+                                </C.StatusCard>
+                            ) : keywordError ? (
+                                <C.ErrorCard>{keywordError}</C.ErrorCard>
+                            ) : (
+                                <KeywordCard
+                                    companyInfo={companyInfo}
+                                    keywords={keywordData}
+                                />
+                            )}
                         </H.Monthly>
                     </H.Home>
                 </C.PageSpace>
