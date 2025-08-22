@@ -99,7 +99,18 @@ function Home() {
                 if (!aborted) setKeywordData(data);
             } catch (e) {
                 console.error(e);
-                if (!aborted) setKeywordError("키워드를 불러오지 못했습니다.");
+                if (!aborted) {
+                    // ✅ 400이면 서버 detail을 그대로 사용
+                    if (e?.response?.status === 400) {
+                        setKeywordError(
+                            e?.response?.data?.detail ||
+                                "#최근 3개월 리뷰가 충분하지 않습니다."
+                        );
+                    } else {
+                        // 기타 에러는 일반 메시지 (원하면 빈 문자열로 해서 해시태그 기본문구 보이게 해도 됨)
+                        setKeywordError("#키워드를 불러오지 못했습니다.");
+                    }
+                }
             } finally {
                 if (!aborted) setKeywordLoading(false);
             }
@@ -167,12 +178,15 @@ function Home() {
                                 <C.StatusCard>
                                     <C.Spinner /> 키워드 불러오는 중…
                                 </C.StatusCard>
-                            ) : keywordError ? (
-                                <C.ErrorCard>{keywordError}</C.ErrorCard>
                             ) : (
                                 <KeywordCard
                                     companyInfo={companyInfo}
-                                    keywords={keywordData}
+                                    keywords={
+                                        Array.isArray(keywordData?.data)
+                                            ? keywordData.data
+                                            : keywordData
+                                    }
+                                    message={keywordError}
                                 />
                             )}
                         </H.Monthly>

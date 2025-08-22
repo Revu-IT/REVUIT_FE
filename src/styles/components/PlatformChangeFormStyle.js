@@ -6,6 +6,8 @@ export const Platform = styled.div`
     align-items: center;
     justify-content: center;
     width: 100%;
+    margin-top: 32px;
+    margin-bottom: 91px;
 `;
 
 export const Card = styled.div`

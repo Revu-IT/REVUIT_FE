@@ -3,7 +3,12 @@ import * as M from "../styles/components/MonthlyCardStyle";
 
 import cloude from "../assets/images/cloude.svg";
 
-function KeywordCard({ companyInfo = null, keywords = [], limit = 4 }) {
+function KeywordCard({
+    companyInfo = null,
+    keywords = [],
+    limit = 4,
+    message = "",
+}) {
     const companyLabel = companyInfo?.display ?? "내 회사";
     const tags = (Array.isArray(keywords) ? keywords : [])
         .map((k) => String(k ?? "").trim())
@@ -11,7 +16,9 @@ function KeywordCard({ companyInfo = null, keywords = [], limit = 4 }) {
         .filter((k, i, arr) => arr.indexOf(k) === i)
         .slice(0, limit);
 
-    const tagLine = tags.length
+    const tagLine = message
+        ? message
+        : tags.length
         ? tags.map((t) => `#${t}`).join(" ")
         : "#키워드 데이터가 없습니다";
 
