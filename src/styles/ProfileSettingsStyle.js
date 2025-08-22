@@ -25,7 +25,7 @@ export const Title = styled.div`
 export const Form = styled.div`
     display: flex;
     flex-direction: column;
-    margin-top: 32px;
+
     width: 100%;
 `;
 

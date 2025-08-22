@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const Keyword = styled.div`
     display: flex;
     flex-direction: column;
+    margin-bottom: 94px;
 `;
 
 export const Cloud = styled.div`
@@ -59,4 +60,5 @@ export const KeywordCloude = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    padding: 24px;
 `;
