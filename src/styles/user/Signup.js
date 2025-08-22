@@ -104,21 +104,18 @@ export const InputField = styled.input`
 
 `;
 export const SubmitButton = styled.button`
-    bottom: 40px;
-    position: fixed;
-    font-family: "SF Pro";
+    font-family: "SF-Pro";
     font-weight: 600;
     font-size: 17px;
     color: #ffffff;
     text-align: center;
     box-sizing: border-box;
-    width:65vw;
     height: 54px;
     border: none;
     background-color: #007bff;
     border-radius: 16px;
-margin-left:10px;
-margin-right:10px;
+    margin-bottom: 20px;
+    margin-top:30px;
 
 `;
 

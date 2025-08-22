@@ -27,38 +27,38 @@ function Signup() {
 
     const companies = [
         {
-            id: "TEMU",
-            name: "TEMU",
-            category: "플랫폼",
-            logo: <img src="..\src\assets\images\temu.svg" />,
-            company_id: 1,
-        },
-        {
-            id: "GMARKET",
-            name: "GMARKET",
-            category: "플랫폼",
-            logo: <img src="..\src\assets\images\gmarket.svg" />,
-            company_id: 2,
-        },
-        {
-            id: "11ST",
-            name: "11ST",
-            category: "플랫폼",
-            logo: <img src="..\src\assets\images\11st.svg" />,
-            company_id: 3,
-        },
-        {
             id: "COUPANG",
             name: "COUPANG",
             category: "플랫폼",
             logo: <img src="..\src\assets\images\coupang.svg" />,
-            company_id: 4,
+            company_id: 1,
         },
         {
             id: "ALIEXPRESS",
             name: "ALIEXPRESS",
             category: "플랫폼",
             logo: <img src="..\src\assets\images\ali.svg" />,
+            company_id: 2,
+        },
+        {
+            id: "GMARKET",
+            name: "GMARKET",
+            category: "플랫폼",
+            logo: <img src="..\src\assets\images\gmarket.svg" />,
+            company_id: 3,
+        },
+        {
+            id: "11ST",
+            name: "11ST",
+            category: "플랫폼",
+            logo: <img src="..\src\assets\images\11st.svg" />,
+            company_id: 4,
+        },
+        {
+            id: "TEMU",
+            name: "TEMU",
+            category: "플랫폼",
+            logo: <img src="..\src\assets\images\temu.svg" />,
             company_id: 5,
         },
     ];
@@ -108,9 +108,9 @@ function Signup() {
             (company) => company.id === selectedCompany
         );
 
-        // API URL
+        //API URL
         //const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
-        //const loginUrl = `${apiUrl}/user/signup`;
+        //const signupUrl = `${apiUrl}/user/signup`;
         // 프록시 사용
         const signupUrl = `/api/user/signup`;
 
@@ -120,14 +120,22 @@ function Signup() {
                 password,
                 password_confirm,
                 company_id: selectedCompanyData.company_id,
-            });
+            },
+    {
+        headers: {
+            "Content-Type": "application/json",
+        },
+        // 추가 옵션
+        withCredentials: true, // CORS 쿠키 전송을 위해
+    }
+);
 
             console.log("서버 응답:", response);
 
             if (response.status === 201) {
                 setCookie("authToken", response.data.authToken, { path: "/" });
                 alert(response.data.message || "회원가입이 완료되었습니다!");
-                navigate("/home"); // 홈!!  이동
+                navigate("/signin"); // 홈!!  이동
             } else {
                 alert(
                     `회원가입 실패: ${
@@ -250,12 +258,14 @@ function Signup() {
                                         )}
                                 </C.ValidationIcon>
                             </C.InputWrapper>
-                        </C.InputContainer>
-                    </C.FormContainer>
-
-                    <C.SubmitButton onClick={handleStep1Next}>
+                             <C.SubmitButton onClick={handleStep1Next}>
                         다음
                     </C.SubmitButton>
+                        </C.InputContainer>
+                        
+                    </C.FormContainer>
+
+                   
                 </C.PageSpace>
             </C.Center>
         </C.Page>

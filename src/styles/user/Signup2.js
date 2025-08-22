@@ -83,65 +83,18 @@ export const InputField = styled.input`
 `;
 
 export const SubmitButton = styled.button`
-        bottom: 40px;
-    position: fixed;
-    font-family: "SF Pro";
+font-family: "SF-Pro";
     font-weight: 600;
     font-size: 17px;
     color: #ffffff;
     text-align: center;
     box-sizing: border-box;
-    width:65vw;
+    width: calc(100% - 48px);
     height: 54px;
     border: none;
     background-color: #007bff;
     border-radius: 16px;
-margin-left:10px;
-margin-right:10px;
-`;
-
-// 기존 컴포넌트명 호환성을 위한 별칭
-export const InputBox = styled(InputContainer)`
-    b {
-        font-size: 16px;
-        font-weight: 600;
-        color: #333;
-        margin-bottom: 8px;
-        display: block;
-    }
-    
-    input {
-        width: 100%;
-        height: 56px;
-        padding: 16px;
-        border: none;
-        background-color: #f8f9fa;
-        border-radius: 12px;
-        font-size: 16px;
-        color: #333;
-        
-        &::placeholder {
-            color: #999;
-            font-size: 14px;
-        }
-        
-        &:focus {
-            outline: none;
-            background-color: #f0f0f0;
-            box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
-        }
-    }
-`;
-
-export const ClickBox = styled(SubmitButton)`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    
-    div {
-        font-size: 16px;
-        font-weight: 600;
-    }
+    margin-bottom: 20px;
 `;
 
 // Signup2용 추가 스타일 컴포넌트들
