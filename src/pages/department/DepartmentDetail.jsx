@@ -22,8 +22,6 @@ function DepartmentDetail() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
 
-    const totalCount = useMemo(() => reviews.length, [reviews]);
-
     const deptMeta = useMemo(
         () => DEPARTMENTS.find((d) => d.id === departmentId),
         [departmentId]
@@ -80,10 +78,7 @@ function DepartmentDetail() {
                             {titleEn ? renderTitle(titleEn) : "Department"}
                         </D.title>
 
-                        <ReviewSummary
-                            departmentId={departmentId}
-                            totalCount={totalCount}
-                        />
+                        <ReviewSummary departmentId={departmentId} />
                         <D.Line />
 
                         {loading ? (

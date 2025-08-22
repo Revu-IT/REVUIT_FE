@@ -6,13 +6,16 @@ export const Report = styled.div`
     margin: 24px;
 `;
 
-export const Container = styled.div`
+export const Container = styled.ul`
     display: flex;
     flex-direction: column;
 
     overflow-y: auto;
     -webkit-overflow-scrolling: touch;
     padding-bottom: 78px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
 `;
 
 export const Card = styled.div`
