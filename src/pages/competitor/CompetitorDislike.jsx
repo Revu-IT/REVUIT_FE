@@ -108,7 +108,7 @@ function CompetitorDislike() {
 
                             <L.TitleSection>
                                 <L.MainTitle>
-                                    <L.BadText>싫어요👍</L.BadText>
+                                    <L.BadText>싫어요</L.BadText>
                                     <L.ThumbsUp></L.ThumbsUp>
                                     가 많은 앱
                                     <br />
@@ -141,6 +141,10 @@ function CompetitorDislike() {
                                     );
                                 })}
                             </L.RankingList>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
                         </L.CompetitorContainer>
                     </C.PageSpace>
                 </C.Center>

@@ -16,8 +16,7 @@ export const PageSpace = styled.div`
     width: 100vw;
     min-height: 100dvh;
     /* background-color: white; */
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3),
-        0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
     @media (hover: hover) and (pointer: fine) {
         width: 360px;
     }
@@ -30,15 +29,14 @@ export const FixedHeaderWrapper = styled.div`
     z-index: 1000;
 `;
 
-
 export const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 32px;
     margin-bottom: 120px;
-    margin-left:20px;
-    margin-right:20px;
-    height:50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 50px;
 `;
 
 export const InputContainer = styled.div`
@@ -63,18 +61,18 @@ export const InputField = styled.input`
     border-radius: 12px;
     font-size: 16px;
     color: #333;
-    
+
     &::placeholder {
         color: #999;
         font-size: 14px;
     }
-    
+
     &:focus {
         outline: none;
         background-color: #f0f0f0;
         box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
     }
-    
+
     &:disabled {
         background-color: #e9ecef;
         color: #6c757d;
@@ -83,7 +81,7 @@ export const InputField = styled.input`
 `;
 
 export const SubmitButton = styled.button`
-font-family: "SF-Pro";
+    font-family: "SF-Pro";
     font-weight: 600;
     font-size: 17px;
     color: #ffffff;
@@ -99,7 +97,7 @@ font-family: "SF-Pro";
 
 // Signup2용 추가 스타일 컴포넌트들
 export const BlueText = styled.span`
-    color: #007AFF;
+    color: #007aff;
 `;
 
 export const CompanyList = styled.div`
@@ -107,19 +105,18 @@ export const CompanyList = styled.div`
     flex-direction: column;
     gap: 12px;
     margin-bottom: 120px;
-        margin-left:20px;
-    margin-right:20px;
+    margin-left: 20px;
+    margin-right: 20px;
 `;
 
 export const CompanyItem = styled.div`
     display: flex;
     align-items: center;
     padding: 16px;
-    border: 2px solid ${props => props.selected ? '#007AFF' : '#f0f0f0'};
+    border: 2px solid ${(props) => (props.selected ? "#007AFF" : "#f0f0f0")};
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.2s ease;
-   
 `;
 
 export const CompanyLogo = styled.div`
@@ -160,4 +157,3 @@ export const CheckIcon = styled.div`
     height: 24px;
     border-radius: 50%;
 `;
-
