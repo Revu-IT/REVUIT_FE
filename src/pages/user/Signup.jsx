@@ -76,12 +76,9 @@ function Signup() {
         }
 
         // 비밀번호 유효성 체크
-        const passwordRegex =
-            /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%#?&])[A-Za-z\d@$!%#?&]{8,}$/;
+        const passwordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%#?&])[A-Za-z\d@$!%#?&]{8,}$/;
         if (!passwordRegex.test(password)) {
-            setPasswordError(
-                "영문, 숫자, 특수문자 포함 8자 이상으로 입력해주세요."
-            );
+            setPasswordError("영문, 숫자, 특수문자 포함 8자 이상으로 입력해주세요.");
             return;
         } else {
             setPasswordError("");
@@ -104,9 +101,7 @@ function Signup() {
 
     // 최종 회원가입
     const handleFinalSignup = async () => {
-        const selectedCompanyData = companies.find(
-            (company) => company.id === selectedCompany
-        );
+        const selectedCompanyData = companies.find((company) => company.id === selectedCompany);
 
         //API URL
         //const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
@@ -115,20 +110,22 @@ function Signup() {
         const signupUrl = `/api/user/signup`;
 
         try {
-            const response = await axios.post(signupUrl, {
-                email,
-                password,
-                password_confirm,
-                company_id: selectedCompanyData.company_id,
-            },
-    {
-        headers: {
-            "Content-Type": "application/json",
-        },
-        // 추가 옵션
-        withCredentials: true, // CORS 쿠키 전송을 위해
-    }
-);
+            const response = await axios.post(
+                signupUrl,
+                {
+                    email,
+                    password,
+                    password_confirm,
+                    company_id: selectedCompanyData.company_id,
+                },
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    // 추가 옵션
+                    withCredentials: true, // CORS 쿠키 전송을 위해
+                }
+            );
 
             console.log("서버 응답:", response);
 
@@ -137,11 +134,7 @@ function Signup() {
                 alert(response.data.message || "회원가입이 완료되었습니다!");
                 navigate("/signin"); // 홈!!  이동
             } else {
-                alert(
-                    `회원가입 실패: ${
-                        response.data.message || "알 수 없는 오류"
-                    }`
-                );
+                alert(`회원가입 실패: ${response.data.message || "알 수 없는 오류"}`);
             }
         } catch (error) {
             console.error("회원가입 실패:", error);
@@ -152,11 +145,7 @@ function Signup() {
                 console.log("Axios response:", error.response);
             }
 
-            if (
-                error.response &&
-                error.response.data &&
-                error.response.data.message
-            ) {
+            if (error.response && error.response.data && error.response.data.message) {
                 alert(`회원가입 실패: ${error.response.data.message}`);
             } else {
                 alert("회원가입 실패: 네트워크 오류가 발생했습니다.");
@@ -194,12 +183,9 @@ function Signup() {
                             <div style={{ display: "flex" }}>
                                 <C.InputLabel>비밀번호</C.InputLabel>
                                 {password &&
-                                    !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%#?&])[A-Za-z\d@$!%#?&]{8,}$/.test(
-                                        password
-                                    ) && (
+                                    !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%#?&])[A-Za-z\d@$!%#?&]{8,}$/.test(password) && (
                                         <C.ErrorMessage>
-                                            &nbsp;&nbsp;영문, 숫자, 특수문자
-                                            포함 8자 이상으로 입력해주세요
+                                            &nbsp;&nbsp;영문, 숫자, 특수문자 포함 8자 이상으로 입력해주세요
                                         </C.ErrorMessage>
                                     )}
                             </div>
@@ -208,23 +194,17 @@ function Signup() {
                                     type="password"
                                     placeholder="영문, 숫자, 특수문자 포함 8자 이상"
                                     value={password}
-                                    onChange={(e) =>
-                                        setPassword(e.target.value)
-                                    }
+                                    onChange={(e) => setPassword(e.target.value)}
                                 />
                                 <C.ValidationIcon>
                                     {password &&
                                         /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%#?&])[A-Za-z\d@$!%#?&]{8,}$/.test(
                                             password
-                                        ) && (
-                                            <img src="..\src\assets\images\checkmark_valid.svg" />
-                                        )}
+                                        ) && <img src="..\src\assets\images\checkmark_valid.svg" />}
                                     {password &&
                                         !/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%#?&])[A-Za-z\d@$!%#?&]{8,}$/.test(
                                             password
-                                        ) && (
-                                            <img src="..\src\assets\images\delete_valid.svg" />
-                                        )}
+                                        ) && <img src="..\src\assets\images\delete_valid.svg" />}
                                 </C.ValidationIcon>
                             </C.InputWrapper>
                         </C.InputContainer>
@@ -233,9 +213,7 @@ function Signup() {
                             <div style={{ display: "flex" }}>
                                 <C.InputLabel>비밀번호 확인</C.InputLabel>
                                 {passwordConfirmError && (
-                                    <C.ErrorMessage>
-                                        &nbsp;&nbsp;{passwordConfirmError}
-                                    </C.ErrorMessage>
+                                    <C.ErrorMessage>&nbsp;&nbsp;{passwordConfirmError}</C.ErrorMessage>
                                 )}
                             </div>
                             <C.InputWrapper>
@@ -243,29 +221,20 @@ function Signup() {
                                     type="password"
                                     placeholder="비밀번호를 다시 입력해주세요"
                                     value={password_confirm}
-                                    onChange={(e) =>
-                                        setPasswordConfirm(e.target.value)
-                                    }
+                                    onChange={(e) => setPasswordConfirm(e.target.value)}
                                 />
                                 <C.ValidationIcon>
-                                    {password_confirm &&
-                                        password_confirm === password && (
-                                            <img src="..\src\assets\images\checkmark_valid.svg" />
-                                        )}
-                                    {password_confirm &&
-                                        password_confirm !== password && (
-                                            <img src="..\src\assets\images\delete_valid.svg" />
-                                        )}
+                                    {password_confirm && password_confirm === password && (
+                                        <img src="..\src\assets\images\checkmark_valid.svg" />
+                                    )}
+                                    {password_confirm && password_confirm !== password && (
+                                        <img src="..\src\assets\images\delete_valid.svg" />
+                                    )}
                                 </C.ValidationIcon>
                             </C.InputWrapper>
-                             <C.SubmitButton onClick={handleStep1Next}>
-                        다음
-                    </C.SubmitButton>
+                            <C.SubmitButton onClick={handleStep1Next}>다음</C.SubmitButton>
                         </C.InputContainer>
-                        
                     </C.FormContainer>
-
-                   
                 </C.PageSpace>
             </C.Center>
         </C.Page>
@@ -282,7 +251,6 @@ function Signup() {
                         <br />
                         <C.SubTitle>기업</C.SubTitle>을 선택해주세요.
                     </C.Title>
-
                     <C2.CompanyList>
                         {companies.map((company) => (
                             <C2.CompanyItem
@@ -292,30 +260,21 @@ function Signup() {
                             >
                                 <C2.CompanyLogo>{company.logo}</C2.CompanyLogo>
                                 <C2.CompanyInfo>
-                                    <C2.CompanyName>
-                                        {company.name}
-                                    </C2.CompanyName>
-                                    <C2.CompanyCategory>
-                                        {company.category}
-                                    </C2.CompanyCategory>
+                                    <C2.CompanyName>{company.name}</C2.CompanyName>
+                                    <C2.CompanyCategory>{company.category}</C2.CompanyCategory>
                                 </C2.CompanyInfo>
-                                <C2.CheckIcon
-                                    selected={selectedCompany === company.id}
-                                >
+                                <C2.CheckIcon selected={selectedCompany === company.id}>
                                     {selectedCompany === company.id && (
-                                        <img
-                                            src="/src/assets/images/checkmark_selected.svg"
-                                            alt="선택됨"
-                                        />
+                                        <img src="/src/assets/images/checkmark_selected.svg" alt="선택됨" />
                                     )}
                                 </C2.CheckIcon>
                             </C2.CompanyItem>
                         ))}
                     </C2.CompanyList>
-
-                    <C2.SubmitButton onClick={handleFinalSignup}>
-                        회원가입
-                    </C2.SubmitButton>
+                    <div style={{ display: "flex", justifyContent: "center" }}>
+                        {" "}
+                        <C2.SubmitButton onClick={handleFinalSignup}>회원가입</C2.SubmitButton>
+                    </div>
                 </C2.PageSpace>
             </C2.Center>
         </C2.Page>

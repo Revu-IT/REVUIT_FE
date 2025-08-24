@@ -140,6 +140,10 @@ function CompetitorLike() {
                                     );
                                 })}
                             </L.RankingList>
+                            <br />
+                            <br />
+                            <br />
+                            <br />
                         </L.CompetitorContainer>
                     </C.PageSpace>
                 </C.Center>
