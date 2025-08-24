@@ -17,7 +17,6 @@ function DepartmentCard({ id, en }) {
 
     useEffect(() => {
         if (!Number.isFinite(departmentId) || departmentId <= 0) {
-            // id가 잘못되면 요청 안 함
             setErr("부서 식별자가 유효하지 않습니다.");
             return;
         }
@@ -29,32 +28,16 @@ function DepartmentCard({ id, en }) {
                 setLoading(true);
                 setErr("");
 
-                // 서버 호출
                 const res = await getReviewSummary(departmentId);
-                // console.log("getReviewSummary resp:", res);
 
-                // ✅ 방어적 파싱: reports(복수) 포함
-                const text =
-                    typeof res === "string"
-                        ? res
-                        : typeof res?.data === "string"
-                        ? res.data
-                        : res?.data?.reports ??
-                          res?.data?.report ??
-                          res?.data?.content ??
-                          res?.reports ??
-                          res?.report ??
-                          res?.content ??
-                          "";
-
-                const normalized = (text ?? "").toString().trim();
-                const looksLikeHtml =
-                    typeof normalized === "string" &&
-                    /<\/?[a-z][\s\S]*>/i.test(normalized); // 아주 단순한 HTML 감지
+                // ✅ reports 키만 사용
+                const textRaw = res?.data?.reports ?? res?.reports ?? "";
+                const text = String(textRaw).trim();
+                const html = /<\/?[a-z][\s\S]*>/i.test(text); // 단순 HTML 여부 감지
 
                 if (!aborted) {
-                    setReport(normalized);
-                    setIsHtml(looksLikeHtml);
+                    setReport(text);
+                    setIsHtml(html);
                 }
             } catch (e) {
                 console.error(e);
