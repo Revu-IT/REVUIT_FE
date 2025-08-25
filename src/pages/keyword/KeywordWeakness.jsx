@@ -49,7 +49,10 @@ function KeywordWeakness() {
     const handleList = (keyword) => {
         // 키워드를 파라미터로 전달
         navigate(`/keyword/${companyInfo?.display}/detail`, {
-            state: { keyword: keyword },
+            state: {
+                keyword: keyword,
+                sentiment: sentiment, // "negative" 추가
+            },
         });
     };
     const handleNext = () => {
@@ -76,7 +79,7 @@ function KeywordWeakness() {
                             <C.DetailTitle>
                                 이런 키워드가
                                 <br />
-                                <C.GreenText>약점</C.GreenText>이에요
+                                <C.YText>약점</C.YText>이에요
                             </C.DetailTitle>
 
                             <C.StatContainer>
@@ -87,7 +90,7 @@ function KeywordWeakness() {
                                 {keywords.map((item, index) => (
                                     <C.ReviewItem key={index}>
                                         <C.ReviewHeader>
-                                            <C.KeywordTag>{item.keyword}</C.KeywordTag>
+                                            <C.KeywordTag style={{ color: "#F5BF28" }}>{item.keyword}</C.KeywordTag>
                                         </C.ReviewHeader>
                                         <C.ReviewContent>{item.latest_review}</C.ReviewContent>
                                         <C.MoreButton onClick={() => handleList(item.keyword)}>

@@ -16,13 +16,11 @@ export const PageSpace = styled.div`
     width: 100vw;
     min-height: 100dvh;
     /* background-color: white; */
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3),
-        0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
     @media (hover: hover) and (pointer: fine) {
         width: 360px;
     }
 `;
-
 
 /*여기부터 */
 export const FixedHeaderWrapper = styled.div`
@@ -38,20 +36,20 @@ export const KeywordTitle = styled.div`
     align-items: center;
     margin: 20px 0 30px 0;
     padding: 0 20px;
-    
+
     .keyword-label {
-        color: #00C73C;
+        color: #00c73c;
         font-size: 24px;
         font-weight: bold;
     }
-    
+
     .keyword-divider {
         margin: 0 8px;
         color: #333;
         font-size: 24px;
         font-weight: bold;
     }
-    
+
     .keyword-name {
         color: #333;
         font-size: 24px;
@@ -104,12 +102,12 @@ export const ReviewSummary = styled.div`
     border-radius: 12px;
     text-align: center;
     margin: 30px 20px 20px 20px;
-    
+
     p {
         margin: 5px 0;
         color: #666;
         font-size: 14px;
-        
+
         &:first-child {
             font-weight: bold;
             color: #333;
@@ -120,7 +118,7 @@ export const ReviewSummary = styled.div`
 export const LoadingContainer = styled.div`
     text-align: center;
     padding: 50px 0;
-    
+
     p {
         color: #666;
         font-size: 16px;
@@ -130,38 +128,34 @@ export const LoadingContainer = styled.div`
 export const ErrorContainer = styled.div`
     text-align: center;
     padding: 50px 0;
-    
+
     p {
         color: #f44336;
         font-size: 16px;
         margin-bottom: 20px;
     }
-    
+
     button {
-        background-color: #00C73C;
+        background-color: #00c73c;
         color: white;
         border: none;
         padding: 12px 24px;
         border-radius: 8px;
         font-size: 14px;
         cursor: pointer;
-        
-        &:hover {
-            background-color: #00a832;
-        }
     }
 `;
 
 export const EmptyContainer = styled.div`
     text-align: center;
     padding: 50px 0;
-    
+
     p {
         color: #999;
         font-size: 16px;
         margin-bottom: 20px;
     }
-    
+
     button {
         background-color: #666;
         color: white;
@@ -170,7 +164,7 @@ export const EmptyContainer = styled.div`
         border-radius: 8px;
         font-size: 14px;
         cursor: pointer;
-        
+
         &:hover {
             background-color: #555;
         }

@@ -59,9 +59,8 @@ function CompetitorKeyword() {
             <C.Page>
                 <C.Center>
                     <C.PageSpace>
-                        <C.FixedHeaderWrapper>
-                            <Header Title="분기별 키워드" />
-                        </C.FixedHeaderWrapper>
+                        <Header Title="분기별 키워드" />
+                        <C.FixedHeaderWrapper></C.FixedHeaderWrapper>
                         <M.Keyword>
                             <M.Cloud>
                                 <M.CloudImg src={cloude} />
