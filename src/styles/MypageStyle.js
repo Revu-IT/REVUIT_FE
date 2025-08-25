@@ -124,7 +124,7 @@ export const SupButton = styled.button`
     background: none;
     color: #969696;
     font-family: "SF Pro";
-    font-size: 15px;
+    font-size: 12px;
     font-weight: 400;
     font-stretch: expanded;
     padding: 9px 27px;
