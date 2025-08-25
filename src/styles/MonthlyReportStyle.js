@@ -126,4 +126,11 @@ export const Button = styled.button`
     right: 24px;
     bottom: 24px;
     z-index: 10;
+    @media (hover: hover) and (pointer: fine) {
+        width: 360px;
+        width: 100vw;
+        max-width: 312px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 `;

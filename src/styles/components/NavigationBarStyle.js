@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Nav = styled.div`
     position: fixed;
     bottom: 0;
-    width: 100%;
     height: 83px;
     background: rgba(255, 255, 255, 0.75);
     border-top: 0.33px solid rgba(0, 0, 0, 0.3);
@@ -11,6 +10,16 @@ export const Nav = styled.div`
     justify-content: space-around;
     padding-top: 12px;
     z-index: 100;
+    width: 100vw;
+    left: 0;
+
+    @media (hover: hover) and (pointer: fine) {
+        width: 360px;
+        width: 100vw;
+        max-width: 360px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 `;
 
 export const NavItem = styled.div`

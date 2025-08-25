@@ -59,8 +59,9 @@ function CompetitorKeyword() {
             <C.Page>
                 <C.Center>
                     <C.PageSpace>
-                        <Header Title="분기별 키워드" />
-                        <C.FixedHeaderWrapper></C.FixedHeaderWrapper>
+                        <C.FixedHeaderWrapper>
+                            <Header Title="경쟁사 분석" />
+                        </C.FixedHeaderWrapper>
                         <M.Keyword>
                             <M.Cloud>
                                 <M.CloudImg src={cloude} />
@@ -70,9 +71,14 @@ function CompetitorKeyword() {
                                     <span>키워드 </span>클라우드
                                 </M.Title>
                                 <M.Date>오늘 09:00 기준</M.Date>
-                                <M.Subtitle>최대 50개의 키워드를 확인할 수 있어요.</M.Subtitle>
+                                <M.Subtitle>
+                                    최대 50개의 키워드를 확인할 수 있어요.
+                                </M.Subtitle>
                             </M.Container>
-                            <SentimentTabs value={sentiment} onChange={setSentiment} />
+                            <SentimentTabs
+                                value={sentiment}
+                                onChange={setSentiment}
+                            />
                             <M.KeywordCloude>
                                 {loading ? (
                                     <C.StatusCard>
