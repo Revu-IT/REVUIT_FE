@@ -9,15 +9,15 @@ function KeywordDetail() {
     const navigate = useNavigate();
     const [searchParams] = useSearchParams();
     const location = useLocation();
-    
+
     // 상태 관리
     const [keywordData, setKeywordData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    
+
     // URL 파라미터 또는 state에서 keyword와 segment 가져오기
-    const keyword = searchParams.get('keyword') || location.state?.keyword || '';
-    const segment = searchParams.get('segment') || location.state?.segment || 'positive';
+    const keyword = searchParams.get("keyword") || location.state?.keyword || "";
+    const segment = searchParams.get("segment") || location.state?.segment || "positive";
 
     // 키워드가 없으면 에러 처리
     if (!keyword) {
@@ -26,11 +26,9 @@ function KeywordDetail() {
                 <C.Center>
                     <C.PageSpace>
                         <Header Title="키워드별 분석" />
-                        <div style={{ textAlign: 'center', padding: '50px 0' }}>
+                        <div style={{ textAlign: "center", padding: "50px 0" }}>
                             <p>키워드가 지정되지 않았습니다.</p>
-                            <button onClick={() => navigate(-1)}>
-                                이전 페이지로 돌아가기
-                            </button>
+                            <button onClick={() => navigate(-1)}>이전 페이지로 돌아가기</button>
                         </div>
                     </C.PageSpace>
                 </C.Center>
@@ -44,40 +42,39 @@ function KeywordDetail() {
             try {
                 setLoading(true);
                 setError(null);
-                
-                console.log('API 호출 - keyword:', keyword, 'segment:', segment);
-                
+
+                console.log("API 호출 - keyword:", keyword, "segment:", segment);
+
                 // axios instance 사용
-                const response = await api.get('/analyze/reviews-by-keyword', {
+                const response = await api.get("/analyze/reviews-by-keyword", {
                     params: {
                         keyword: keyword,
-                        segment: segment
-                    }
+                        segment: segment,
+                    },
                 });
-                
-                console.log('받은 데이터:', response.data);
-                
+
+                console.log("받은 데이터:", response.data);
+
                 const data = response.data;
-                
+
                 // 응답 구조 검증
-                if (!data || typeof data !== 'object') {
-                    throw new Error('잘못된 응답 구조입니다.');
+                if (!data || typeof data !== "object") {
+                    throw new Error("잘못된 응답 구조입니다.");
                 }
-                
+
                 // reviews 배열이 없으면 빈 배열로 초기화
                 if (!data.reviews || !Array.isArray(data.reviews)) {
                     data.reviews = [];
                 }
-                
+
                 // keyword와 segment가 없으면 요청 파라미터로 설정
                 if (!data.keyword) data.keyword = keyword;
                 if (!data.segment) data.segment = segment;
-                
+
                 setKeywordData(data);
-                
             } catch (err) {
-                console.error('API 호출 실패:', err);
-                setError(err.response?.data?.message || err.message || '데이터를 불러오는데 실패했습니다.');
+                console.error("API 호출 실패:", err);
+                setError(err.response?.data?.message || err.message || "데이터를 불러오는데 실패했습니다.");
             } finally {
                 setLoading(false);
             }
@@ -89,10 +86,10 @@ function KeywordDetail() {
     // 날짜 포맷팅 함수
     const formatDate = (dateString) => {
         const date = new Date(dateString);
-        return date.toLocaleDateString('ko-KR', {
-            year: 'numeric',
-            month: '2-digit',
-            day: '2-digit'
+        return date.toLocaleDateString("ko-KR", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
         });
     };
 
@@ -116,16 +113,15 @@ function KeywordDetail() {
         );
     }
 
-
     return (
         <D.Page>
             <D.Center>
                 <D.PageSpace>
+                    <Header Title="키워드별 분석" />
+
                     {/* 키워드 타이틀 */}
                     <D.KeywordTitle>
-                        <span className="keyword-label">
-                            {getSegmentLabel(keywordData.segment)}
-                        </span>
+                        <span className="keyword-label">{getSegmentLabel(keywordData.segment)}</span>
                         <span className="keyword-divider">|</span>
                         <span className="keyword-name">{keywordData.keyword}</span>
                     </D.KeywordTitle>
@@ -136,9 +132,7 @@ function KeywordDetail() {
                             <D.EventCard key={index}>
                                 <D.EventText>{review.content}</D.EventText>
                                 <D.EventFooter>
-                                    <D.EventStats>
-                                        
-                                    </D.EventStats>
+                                    <D.EventStats></D.EventStats>
                                     <D.EventDate>{formatDate(review.date)}</D.EventDate>
                                 </D.EventFooter>
                             </D.EventCard>

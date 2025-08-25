@@ -203,3 +203,12 @@ export const ErrorMessage = styled.div`
     color: #e74c3c;
     margin-top: 4px;
 `;
+export const Con = styled.div`
+    margin: 0;
+    padding-left: 23px;
+    padding-right: 23px;
+
+    img {
+        margin-top: 10px;
+    }
+`;

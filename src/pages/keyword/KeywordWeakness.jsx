@@ -10,12 +10,12 @@ function KeywordWeakness() {
     const sentiment = "negative";
     const [companyInfo, setCompanyInfo] = useState(null);
     const [companyId, setCompanyId] = useState(null);
-    const [data, setData] = useState(null);        
+    const [data, setData] = useState(null);
     const [keywords, setKeywords] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);    
+    const [error, setError] = useState(null);
 
-      useEffect(() => {
+    useEffect(() => {
         (async () => {
             try {
                 setLoading(true);
@@ -30,12 +30,12 @@ function KeywordWeakness() {
                 const keywordsData = keywordsResponse.data?.data ?? [];
 
                 // 올바른 매핑: 실제 API 데이터 사용
-               const mappedKeywords = keywordsData
-   .filter(k => k.keyword && k.latest_review)
-   .map((k) => ({
-       keyword: k.keyword,
-       latest_review: k.latest_review
-   }));
+                const mappedKeywords = keywordsData
+                    .filter((k) => k.keyword && k.latest_review)
+                    .map((k) => ({
+                        keyword: k.keyword,
+                        latest_review: k.latest_review,
+                    }));
 
                 console.log("키워드 객체 배열:", mappedKeywords);
                 setKeywords(mappedKeywords);
@@ -45,29 +45,32 @@ function KeywordWeakness() {
             }
         })();
     }, []);
-    
+
     const handleList = (keyword) => {
         // 키워드를 파라미터로 전달
-        navigate(`/keyword/${companyInfo?.display}/detail`, { 
-            state: { keyword: keyword } 
+        navigate(`/keyword/${companyInfo?.display}/detail`, {
+            state: { keyword: keyword },
         });
     };
     const handleNext = () => {
         navigate("/home");
     };
-    
+
     return (
         <>
             <C.Page>
                 <C.Center>
                     <C.PageSpace>
                         <Header Title="키워드별 분석" />
-                        
+
                         <C.DetailContainer>
                             <C.EmojiIcon>
-                                <img style={{
-                            width:"150px"
-                        }} src="..\src\assets\images\sad.svg"/>
+                                <img
+                                    style={{
+                                        width: "150px",
+                                    }}
+                                    src="..\src\assets\images\sad.svg"
+                                />
                             </C.EmojiIcon>
 
                             <C.DetailTitle>
@@ -80,26 +83,21 @@ function KeywordWeakness() {
                                 <C.StatText>최근 평가와 함께 알려드려요</C.StatText>
                             </C.StatContainer>
 
-                             <C.ReviewList>
-                                    {keywords.map((item, index) => (
-                                        <C.ReviewItem key={index}>
-                                            <C.ReviewHeader>
-                                                <C.KeywordTag>{item.keyword}</C.KeywordTag>
-                                            </C.ReviewHeader>
-                                            <C.ReviewContent>
-                                                {item.latest_review}
-                                            </C.ReviewContent>
-                                            <C.MoreButton onClick={() => handleList(item.keyword)}>
-                                                리뷰 보러 가기 →
-                                            </C.MoreButton>
-                                        </C.ReviewItem>
-                                    ))}
-                            
+                            <C.ReviewList>
+                                {keywords.map((item, index) => (
+                                    <C.ReviewItem key={index}>
+                                        <C.ReviewHeader>
+                                            <C.KeywordTag>{item.keyword}</C.KeywordTag>
+                                        </C.ReviewHeader>
+                                        <C.ReviewContent>{item.latest_review}</C.ReviewContent>
+                                        <C.MoreButton onClick={() => handleList(item.keyword)}>
+                                            리뷰 보러 가기 →
+                                        </C.MoreButton>
+                                    </C.ReviewItem>
+                                ))}
                             </C.ReviewList>
 
-                            <C.NextButton onClick={handleNext}>
-                                메인으로
-                            </C.NextButton>
+                            <C.NextButton onClick={handleNext}>메인으로</C.NextButton>
                         </C.DetailContainer>
                     </C.PageSpace>
                 </C.Center>
