@@ -1,19 +1,20 @@
-import * as C from "../../styles/keyword/KeywordStrength";
+import * as K from "../../styles/keyword/KeywordWeaknes";
+import * as C from "../../styles/CommonStyle";
 import React, { useState, useEffect } from "react";
 import api from "../../axios/instance";
 import Header from "../../components/HeaderBack";
 import { useNavigate } from "react-router-dom";
 import { companyMap } from "../../utils/companyMap";
+import sad from "../../assets/images/sad.svg";
 
 function KeywordWeakness() {
     const navigate = useNavigate();
     const sentiment = "negative";
     const [companyInfo, setCompanyInfo] = useState(null);
-    const [companyId, setCompanyId] = useState(null);
-    const [data, setData] = useState(null);
+    const [, setCompanyId] = useState(null);
     const [keywords, setKeywords] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [, setLoading] = useState(true);
+    const [, setError] = useState(null);
 
     useEffect(() => {
         (async () => {
@@ -26,7 +27,9 @@ function KeywordWeakness() {
                 setCompanyId(result?.company_id ?? null);
                 setCompanyInfo(companyMap[result?.company_id] ?? null);
 
-                const keywordsResponse = await api.get(`/analyze/keywords/${sentiment}`);
+                const keywordsResponse = await api.get(
+                    `/analyze/keywords/${sentiment}`
+                );
                 const keywordsData = keywordsResponse.data?.data ?? [];
 
                 // 올바른 매핑: 실제 API 데이터 사용
@@ -63,45 +66,48 @@ function KeywordWeakness() {
         <>
             <C.Page>
                 <C.Center>
-                    <C.PageSpace>
+                    <C.PageSpace bg="#f3f4f7">
                         <Header Title="키워드별 분석" />
 
-                        <C.DetailContainer>
-                            <C.EmojiIcon>
-                                <img
-                                    style={{
-                                        width: "150px",
-                                    }}
-                                    src="..\src\assets\images\sad.svg"
-                                />
-                            </C.EmojiIcon>
+                        <K.DetailContainer>
+                            <K.EmojiIcon src={sad}></K.EmojiIcon>
 
-                            <C.DetailTitle>
+                            <K.DetailTitle>
                                 이런 키워드가
                                 <br />
-                                <C.YText>약점</C.YText>이에요
-                            </C.DetailTitle>
+                                <K.YText>약점</K.YText>이에요
+                            </K.DetailTitle>
 
-                            <C.StatContainer>
-                                <C.StatText>최근 평가와 함께 알려드려요</C.StatText>
-                            </C.StatContainer>
+                            <K.StatText>최근 평가와 함께 알려드려요</K.StatText>
 
-                            <C.ReviewList>
+                            <K.ReviewList>
                                 {keywords.map((item, index) => (
-                                    <C.ReviewItem key={index}>
-                                        <C.ReviewHeader>
-                                            <C.KeywordTag style={{ color: "#F5BF28" }}>{item.keyword}</C.KeywordTag>
-                                        </C.ReviewHeader>
-                                        <C.ReviewContent>{item.latest_review}</C.ReviewContent>
-                                        <C.MoreButton onClick={() => handleList(item.keyword)}>
+                                    <K.ReviewItem key={index}>
+                                        <K.ReviewHeader>
+                                            <K.KeywordTag
+                                                style={{ color: "#F5BF28" }}
+                                            >
+                                                {item.keyword}
+                                            </K.KeywordTag>
+                                        </K.ReviewHeader>
+                                        <K.ReviewContent>
+                                            {item.latest_review}
+                                        </K.ReviewContent>
+                                        <K.MoreButton
+                                            onClick={() =>
+                                                handleList(item.keyword)
+                                            }
+                                        >
                                             리뷰 보러 가기 →
-                                        </C.MoreButton>
-                                    </C.ReviewItem>
+                                        </K.MoreButton>
+                                    </K.ReviewItem>
                                 ))}
-                            </C.ReviewList>
+                            </K.ReviewList>
 
-                            <C.NextButton onClick={handleNext}>메인으로</C.NextButton>
-                        </C.DetailContainer>
+                            <K.NextButton onClick={handleNext}>
+                                메인으로
+                            </K.NextButton>
+                        </K.DetailContainer>
                     </C.PageSpace>
                 </C.Center>
             </C.Page>

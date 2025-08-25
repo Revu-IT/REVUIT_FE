@@ -16,7 +16,7 @@ export const Emoji = styled.div`
 `;
 
 export const EmojiImg = styled.img`
-    height: 101.04px;
+    height: 124px;
     width: auto;
 `;
 

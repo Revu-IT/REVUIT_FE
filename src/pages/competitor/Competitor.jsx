@@ -23,9 +23,18 @@ function Competitor() {
                     <C.PageSpace>
                         <Header Title="경쟁사 분석" />
                         <L.Con>
-                            <img src="/src/assets/images/Group 30.png" onClick={handleLike} />
-                            <img src="/src/assets/images/Group 32.png" onClick={handleDislike} />
-                            <img src="/src/assets/images/keywonder.svg" onClick={handleKeyword} />
+                            <img
+                                src="/src/assets/images/Group 30.png"
+                                onClick={handleLike}
+                            />
+                            <img
+                                src="/src/assets/images/Group 32.png"
+                                onClick={handleDislike}
+                            />
+                            <img
+                                src="/src/assets/images/keywonder.svg"
+                                onClick={handleKeyword}
+                            />
                         </L.Con>
                     </C.PageSpace>
                 </C.Center>

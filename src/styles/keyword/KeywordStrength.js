@@ -1,61 +1,31 @@
 import styled from "styled-components";
 
-export const Page = styled.div`
-    width: 100vw;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    /* background-color: #000000; */
-`;
-
-export const Center = styled.div`
-    display: flex;
-    justify-content: center;
-`;
-
-export const PageSpace = styled.div`
-    width: 100vw;
-    min-height: 100dvh;
-    /* background-color: white; */
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
-    @media (hover: hover) and (pointer: fine) {
-        width: 360px;
-    }
-`;
-export const FixedHeaderWrapper = styled.div`
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    z-index: 1000;
-`;
-
-/*여기부터 */
-
 export const DetailContainer = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px 0;
+    justify-content: center;
+    margin: 24px;
 `;
 
-export const EmojiIcon = styled.div`
-    font-size: 60px;
-    margin: 20px 0;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
+export const EmojiIcon = styled.img`
+    height: 124px;
+    width: auto;
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-top: 41px;
+    margin-bottom: 0;
 `;
 
 export const DetailTitle = styled.h1`
-    font-size: 24px;
-    font-weight: 700;
-    color: #333;
+    font-family: "SF-Pro";
+    font-size: 32px;
+    font-stretch: expanded;
     text-align: center;
-    line-height: 1.4;
-    margin: 10px 0px 10px 0px;
+    font-weight: 700;
+    margin-top: 65px;
+    margin-bottom: 0;
 `;
 
 export const GreenText = styled.span`
@@ -65,16 +35,14 @@ export const YText = styled.span`
     color: #f5bf28;
 `;
 
-export const StatContainer = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 30px;
-`;
-
 export const StatText = styled.span`
-    font-size: 14px;
-    color: #666;
+    font-size: 17px;
+    color: #969696;
+    font-family: "SF Pro";
+    font-weight: 500;
+    font-stretch: expanded;
+    margin-top: 12px;
+    margin-bottom: 63px;
 `;
 
 export const StatBadge = styled.div`
@@ -87,7 +55,7 @@ export const StatBadge = styled.div`
 `;
 
 export const ReviewList = styled.div`
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -99,7 +67,7 @@ export const ReviewItem = styled.div`
     border-radius: 12px;
     padding: 16px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid #f0f0f0;
+    border: 1px solid #ffffff;
 `;
 
 export const ReviewHeader = styled.div`
@@ -115,6 +83,7 @@ export const KeywordTag = styled.div`
     border-radius: 16px;
     font-size: 15px;
     font-weight: 600;
+    font-family: "SF Pro";
 `;
 
 export const MoreButton = styled.button`
@@ -123,27 +92,44 @@ export const MoreButton = styled.button`
     color: #999;
     font-size: 12px;
     margin-left: 180px;
+    font-family: "SF Pro";
 `;
 
 export const ReviewContent = styled.p`
     font-size: 14px;
-    color: #333;
+    color: #000000;
     line-height: 1.5;
     margin: 0;
     padding: 5px;
+    font-weight: 400;
+    font-family: "SF Pro";
 `;
 
 export const NextButton = styled.button`
-    font-family: "SF-Pro";
+    font-family: "SF Pro";
     font-weight: 600;
     font-size: 17px;
     color: #ffffff;
     text-align: center;
     box-sizing: border-box;
-    width: calc(100% - 48px);
+    width: auto;
     height: 54px;
     border: none;
     background-color: #007bff;
     border-radius: 16px;
-    margin-bottom: 20px;
+    align-self: flex-end;
+    margin-top: auto;
+    position: fixed;
+
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+    z-index: 10;
+    @media (hover: hover) and (pointer: fine) {
+        width: 360px;
+        width: 100vw;
+        max-width: 312px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 `;

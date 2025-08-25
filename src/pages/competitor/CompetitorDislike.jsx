@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import * as C from "../../styles/CommonStyle";
-import * as L from "../../styles/competitor/CompetitorLikeStyle";
+import * as L from "../../styles/competitor/CompetitorLikeStyles";
 import Header from "../../components/Header";
 import { companyMap } from "../../utils/companyMap";
 import Sad from "../../assets/images/sad.svg";

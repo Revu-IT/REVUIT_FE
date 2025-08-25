@@ -17,9 +17,9 @@ function DepartmentHelp() {
 
     return (
         <>
-            <C.Page bg="#f3f4f7">
+            <C.Page>
                 <C.Center>
-                    <C.PageSpace>
+                    <C.PageSpace bg="#f3f4f7">
                         <Header />
                         <D.Help>
                             <D.Container>

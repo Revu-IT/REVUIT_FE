@@ -14,9 +14,9 @@ function MonthlyReport() {
 
     return (
         <>
-            <C.Page bg="#f3f4f7">
+            <C.Page>
                 <C.Center>
-                    <C.PageSpace>
+                    <C.PageSpace bg="#f3f4f7">
                         <Header />
                         <M.Report>
                             <M.Container>

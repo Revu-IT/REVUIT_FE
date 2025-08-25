@@ -15,7 +15,7 @@ export const Center = styled.div`
 export const PageSpace = styled.div`
     width: 100vw;
     min-height: 100dvh;
-    background-color: #F5F5F5;
+    background-color: #f5f5f5;
     box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3),
         0 8px 10px -6px rgba(0, 0, 0, 0.3);
     @media (hover: hover) and (pointer: fine) {
@@ -60,7 +60,7 @@ export const MainTitle = styled.h1`
 `;
 
 export const BlueText = styled.span`
-    color: #007AFF;
+    color: #007aff;
 `;
 
 export const Subtitle = styled.p`
@@ -98,16 +98,30 @@ export const KeywordItem = styled.div`
 `;
 
 export const AnalyzeButton = styled.button`
-font-family: "SF-Pro";
+    font-family: "SF Pro";
     font-weight: 600;
     font-size: 17px;
     color: #ffffff;
     text-align: center;
     box-sizing: border-box;
-    width: calc(100% - 48px);
+    width: auto;
     height: 54px;
     border: none;
     background-color: #007bff;
     border-radius: 16px;
-    margin-bottom: 20px;
+    align-self: flex-end;
+    margin-top: auto;
+    position: fixed;
+
+    left: 24px;
+    right: 24px;
+    bottom: 24px;
+    z-index: 10;
+    @media (hover: hover) and (pointer: fine) {
+        width: 360px;
+        width: 100vw;
+        max-width: 312px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 `;
