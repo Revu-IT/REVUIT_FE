@@ -22,8 +22,9 @@ export const title = styled.div`
 `;
 
 export const Line = styled.div`
-    width: 100vw;
-    margin-left: calc(-50vw + 50%);
-    background-color: #f3f4f7;
     height: 3px;
+    background: #f3f4f7;
+    width: calc(100% + 48px);
+    margin-left: -24px;
+    margin-right: -24px;
 `;

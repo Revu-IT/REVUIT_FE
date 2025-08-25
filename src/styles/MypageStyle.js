@@ -16,9 +16,11 @@ export const Profile = styled.div`
 `;
 
 export const Line = styled.div`
-    width: 100vw;
-    background-color: #f3f4f7;
     height: 3px;
+    background: #f3f4f7;
+    width: calc(100% + 48px);
+    margin-left: -24px;
+    margin-right: -24px;
 `;
 
 export const Container = styled.div`
@@ -83,10 +85,12 @@ export const NextButton = styled.img`
 
 export const Support = styled.div`
     background-color: #f3f4f7;
-    width: 100vw;
     box-sizing: border-box;
     padding: 24px 25px;
-    height: 240px;
+    height: 203px;
+    width: calc(100% + 48px);
+    margin-left: -24px;
+    margin-right: -24px;
 `;
 
 export const SupTitle = styled.div`

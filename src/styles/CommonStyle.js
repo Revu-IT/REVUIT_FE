@@ -28,6 +28,13 @@ export const FixedHeaderWrapper = styled.div`
     left: 0;
     width: 100%;
     z-index: 1000;
+    @media (hover: hover) and (pointer: fine) {
+        width: 360px;
+        width: 100vw;
+        max-width: 360px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 `;
 
 export const StatusCard = styled.div`

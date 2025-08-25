@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import * as C from "../../styles/CommonStyle";
-import * as L from "../../styles/competitor/competitorLikeStyle";
+import * as L from "../../styles/competitor/CompetitorLikeStyle";
 import Header from "../../components/Header";
 import { companyMap } from "../../utils/companyMap";
+import Sad from "../../assets/images/sad.svg";
 
 function CompetitorDislike() {
     const [rankings, setRankings] = useState([]);
     const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+    const [, setError] = useState(null);
 
     // company_name을 companyId로 매핑하는 함수
     const getCompanyIdByName = (companyName) => {
@@ -27,10 +28,16 @@ function CompetitorDislike() {
             // 프록시 사용 (동일한 API 사용, 정렬만 다르게)
             const response = await fetch(`/api/analyze/scores/ranking`);
 
-            console.log("📡 Response status:", response.status, response.statusText);
+            console.log(
+                "📡 Response status:",
+                response.status,
+                response.statusText
+            );
 
             if (!response.ok) {
-                throw new Error(`HTTP ${response.status}: 데이터를 불러오는데 실패했습니다.`);
+                throw new Error(
+                    `HTTP ${response.status}: 데이터를 불러오는데 실패했습니다.`
+                );
             }
 
             const result = await response.json();
@@ -44,7 +51,13 @@ function CompetitorDislike() {
                     const negativeScore = 1 - item.positive_average;
                     const rating = (negativeScore * 5).toFixed(2);
 
-                    console.log(`🏢 ${item.company_name} -> negative: ${negativeScore.toFixed(2)}, rating: ${rating}`);
+                    console.log(
+                        `🏢 ${
+                            item.company_name
+                        } -> negative: ${negativeScore.toFixed(
+                            2
+                        )}, rating: ${rating}`
+                    );
 
                     return {
                         rank: item.rank,
@@ -84,7 +97,9 @@ function CompetitorDislike() {
                     <C.PageSpace>
                         <Header Title="경쟁사 분석" />
                         <L.LoadingContainer>
-                            <L.LoadingText>데이터를 불러오는 중...</L.LoadingText>
+                            <L.LoadingText>
+                                데이터를 불러오는 중...
+                            </L.LoadingText>
                         </L.LoadingContainer>
                     </C.PageSpace>
                 </C.Center>
@@ -97,27 +112,28 @@ function CompetitorDislike() {
             <C.Page>
                 <C.Center>
                     <C.PageSpace>
-                        <Header Title="경쟁사 분석" />
+                        <C.FixedHeaderWrapper>
+                            <Header Title="경쟁사 분석" />
+                        </C.FixedHeaderWrapper>
 
-                        <L.CompetitorContainer>
-                            <L.EmojiSection>
-                                <L.LargeEmoji>
-                                    <img src="/src/assets/images/sad.svg" />
-                                </L.LargeEmoji>
-                            </L.EmojiSection>
-
-                            <L.TitleSection>
-                                <L.MainTitle>
-                                    <L.BadText>싫어요</L.BadText>
-                                    <L.ThumbsUp></L.ThumbsUp>
-                                    가 많은 앱
-                                    <br />
-                                    top5
-                                </L.MainTitle>
-                                <L.TimeStamp>오늘 09:00 기준</L.TimeStamp>
-                                <L.Description>경쟁사들과 '싫어요' 순위를 비교했어요</L.Description>
-                                {error && <L.ErrorMessage>* {error}</L.ErrorMessage>}
-                            </L.TitleSection>
+                        <L.Like>
+                            <L.Emoji>
+                                <L.EmojiImg src={Sad} />
+                            </L.Emoji>
+                            <L.Container>
+                                <L.Title>
+                                    <span style={{ color: "#F5BF28" }}>
+                                        싫어요👎{" "}
+                                    </span>
+                                    가 많은 앱<br></br>
+                                    top 5
+                                </L.Title>
+                                <L.Date>오늘 09:00 기준</L.Date>
+                                <L.Subtitle>
+                                    경쟁사들과 ’싫어요’순위를 비교했어요.
+                                </L.Subtitle>
+                            </L.Container>
+                            <L.Line />
 
                             <L.RankingList>
                                 {rankings.map((item) => {
@@ -126,14 +142,23 @@ function CompetitorDislike() {
 
                                     return (
                                         <L.RankingItem key={item.rank}>
-                                            <L.RankNumberBad rank={item.rank}>{item.rank}</L.RankNumberBad>
+                                            <L.RankNumberBad rank={item.rank}>
+                                                {item.rank}
+                                            </L.RankNumberBad>
                                             <L.CompanyInfo>
                                                 <L.CompanyLogo>
-                                                    <img src={company.logo} alt={company.display} />
+                                                    <img
+                                                        src={company.logo}
+                                                        alt={company.display}
+                                                    />
                                                 </L.CompanyLogo>
                                                 <L.CompanyDetails>
-                                                    <L.CompanyName>{company.display}</L.CompanyName>
-                                                    <L.CompanyCategory>{item.category}</L.CompanyCategory>
+                                                    <L.CompanyName>
+                                                        {company.display}
+                                                    </L.CompanyName>
+                                                    <L.CompanyCategory>
+                                                        {item.category}
+                                                    </L.CompanyCategory>
                                                 </L.CompanyDetails>
                                             </L.CompanyInfo>
                                             <L.Rating>{item.rating}</L.Rating>
@@ -141,11 +166,7 @@ function CompetitorDislike() {
                                     );
                                 })}
                             </L.RankingList>
-                            <br />
-                            <br />
-                            <br />
-                            <br />
-                        </L.CompetitorContainer>
+                        </L.Like>
                     </C.PageSpace>
                 </C.Center>
             </C.Page>

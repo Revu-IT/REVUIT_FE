@@ -10,12 +10,16 @@ export const Nav = styled.div`
     justify-content: space-around;
     padding-top: 12px;
     z-index: 100;
-    /* 모바일에선 꽉 차게, 데스크톱에선 360px로 클램프 */
     width: 100vw;
-    max-width: 360px;
-    height: 83px;
-    left: 50%; /* ✅ 가운데 기준 */
-    transform: translateX(-50%); /* ✅ 가로 중앙 정렬 */
+    left: 0;
+
+    @media (hover: hover) and (pointer: fine) {
+        width: 360px;
+        width: 100vw;
+        max-width: 360px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 `;
 
 export const NavItem = styled.div`
