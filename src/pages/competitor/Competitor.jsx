@@ -1,6 +1,6 @@
 import React from "react";
 import * as C from "../../styles/CommonStyle";
-import * as L from "../../styles/competitor/competitorLikeStyle";
+import * as L from "../../styles/competitor/CompetitorLikeStyles";
 import { useNavigate } from "react-router-dom";
 
 import Header from "../../components/Header";
