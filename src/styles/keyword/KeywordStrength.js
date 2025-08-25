@@ -64,43 +64,35 @@ export const ReviewList = styled.div`
 
 export const ReviewItem = styled.div`
     background-color: white;
-    border-radius: 12px;
-    padding: 16px;
+    border-radius: 8px;
+    padding: 18px 24px 8px 24px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border: 1px solid #ffffff;
-`;
-
-export const ReviewHeader = styled.div`
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 12px;
+    flex-direction: column;
 `;
 
 export const KeywordTag = styled.div`
     color: #28a745;
-    padding: 6px 5px;
-    border-radius: 16px;
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 17px;
+    font-weight: 700;
     font-family: "SF Pro";
 `;
 
 export const MoreButton = styled.button`
     background: none;
     border: none;
-    color: #999;
+    color: #969696;
     font-size: 12px;
-    margin-left: 180px;
     font-family: "SF Pro";
+    align-self: flex-end;
+    text-align: right;
 `;
 
 export const ReviewContent = styled.p`
-    font-size: 14px;
+    font-size: 12px;
     color: #000000;
     line-height: 1.5;
-    margin: 0;
-    padding: 5px;
+    margin: 8px 0;
     font-weight: 400;
     font-family: "SF Pro";
 `;

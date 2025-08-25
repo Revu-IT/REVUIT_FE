@@ -83,13 +83,11 @@ function KeywordWeakness() {
                             <K.ReviewList>
                                 {keywords.map((item, index) => (
                                     <K.ReviewItem key={index}>
-                                        <K.ReviewHeader>
-                                            <K.KeywordTag
-                                                style={{ color: "#F5BF28" }}
-                                            >
-                                                {item.keyword}
-                                            </K.KeywordTag>
-                                        </K.ReviewHeader>
+                                        <K.KeywordTag
+                                            style={{ color: "#F5BF28" }}
+                                        >
+                                            {item.keyword}
+                                        </K.KeywordTag>
                                         <K.ReviewContent>
                                             {item.latest_review}
                                         </K.ReviewContent>

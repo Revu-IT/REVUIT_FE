@@ -121,7 +121,7 @@ export const AnalyzeButton = styled.button`
         width: 360px;
         width: 100vw;
         max-width: 312px;
-        left: 50%;
+        left: 49%;
         transform: translateX(-50%);
     }
 `;

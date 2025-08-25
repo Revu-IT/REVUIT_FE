@@ -110,11 +110,9 @@ function KeywordStrength() {
                             {keywords.length > 0
                                 ? keywords.map((item, index) => (
                                       <K.ReviewItem key={index}>
-                                          <K.ReviewHeader>
-                                              <K.KeywordTag>
-                                                  {item.keyword}
-                                              </K.KeywordTag>
-                                          </K.ReviewHeader>
+                                          <K.KeywordTag>
+                                              {item.keyword}
+                                          </K.KeywordTag>
                                           <K.ReviewContent>
                                               {item.latest_review}
                                           </K.ReviewContent>
