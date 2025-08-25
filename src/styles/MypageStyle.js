@@ -86,11 +86,11 @@ export const NextButton = styled.img`
 export const Support = styled.div`
     background-color: #f3f4f7;
     box-sizing: border-box;
-    padding: 24px 25px;
-    height: 203px;
+    padding: 40px 25px 80px 25px;
     width: calc(100% + 48px);
     margin-left: -24px;
     margin-right: -24px;
+    margin-bottom: 40px;
 `;
 
 export const SupTitle = styled.div`

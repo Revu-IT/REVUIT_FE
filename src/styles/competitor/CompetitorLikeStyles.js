@@ -62,6 +62,10 @@ export const Line = styled.div`
     width: calc(100% + 48px);
     margin-left: -24px;
     margin-right: -24px;
+    @media (hover: hover) and (pointer: fine) {
+        width: 360px;
+        margin-left: 0px;
+    }
 `;
 
 export const RankingList = styled.div`
@@ -168,11 +172,12 @@ export const ErrorMessage = styled.div`
     color: #e74c3c;
     margin-top: 4px;
 `;
+
 export const Con = styled.div`
     margin: 0;
-    padding-left: 23px;
-    padding-right: 23px;
-
+    padding-left: 24px;
+    padding-right: 24px;
+    height: 91vh;
     img {
         margin-top: 10px;
     }

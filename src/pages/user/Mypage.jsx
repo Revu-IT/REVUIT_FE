@@ -94,8 +94,8 @@ function Mypage() {
                                     <span>
                                         {companyInfo?.display ?? "내 회사"}
                                     </span>
-                                    의 리뷰를 보고 있네요. 어떤 이야기가 담겨
-                                    있을까요?
+                                    의 리뷰를 보고 있네요.
+                                    <br /> 어떤 이야기가 담겨 있을까요?
                                 </M.Desc>
                             </M.Profile>
                             <M.Line />
