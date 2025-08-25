@@ -16,8 +16,7 @@ export const PageSpace = styled.div`
     width: 100vw;
     min-height: 100dvh;
     /* background-color: white; */
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3),
-        0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
     @media (hover: hover) and (pointer: fine) {
         width: 360px;
     }
@@ -60,7 +59,7 @@ export const DetailTitle = styled.h1`
 `;
 
 export const GreenText = styled.span`
-    color: #F5BF28;
+    color: #f5bf28;
 `;
 
 export const StatContainer = styled.div`
@@ -76,7 +75,7 @@ export const StatText = styled.span`
 `;
 
 export const StatBadge = styled.div`
-    background-color: #007AFF;
+    background-color: #007aff;
     color: white;
     padding: 4px 8px;
     border-radius: 12px;
@@ -108,7 +107,7 @@ export const ReviewHeader = styled.div`
 `;
 
 export const KeywordTag = styled.div`
-    color: #F5BF28;;
+    color: #f5bf28;
     padding: 6px 5px;
     border-radius: 16px;
     font-size: 15px;
@@ -120,7 +119,7 @@ export const MoreButton = styled.button`
     border: none;
     color: #999;
     font-size: 12px;
-    margin-left:180px;
+    margin-left: 180px;
 `;
 
 export const ReviewContent = styled.p`
@@ -132,7 +131,7 @@ export const ReviewContent = styled.p`
 `;
 
 export const NextButton = styled.button`
-font-family: "SF-Pro";
+    font-family: "SF-Pro";
     font-weight: 600;
     font-size: 17px;
     color: #ffffff;

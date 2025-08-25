@@ -16,8 +16,7 @@ export const PageSpace = styled.div`
     width: 100vw;
     min-height: 100dvh;
     /* background-color: white; */
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3),
-        0 8px 10px -6px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 8px 10px -6px rgba(0, 0, 0, 0.3);
     @media (hover: hover) and (pointer: fine) {
         width: 360px;
     }
@@ -35,34 +34,39 @@ export const Title = styled.div`
     color: black;
     line-height: 1.3;
     margin: 40px 20px 40px 20px;
+    font-family: "SF-Pro";
 `;
 export const SubTitle = styled.div`
     font-size: 28px;
     font-weight: 700;
-    color: #007AFF;
+    color: #007aff;
     line-height: 1.3;
-    display:inline;
+    display: inline;
+    font-family: "SF-Pro";
 `;
 export const FormContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 32px;
     margin-bottom: 120px;
-    margin-left:20px;
-    margin-right:20px;
-    height:50px;
+    margin-left: 20px;
+    margin-right: 20px;
+    height: 50px;
+    font-family: "SF-Pro";
 `;
 
 export const InputContainer = styled.div`
     display: flex;
     flex-direction: column;
     gap: 8px;
+    font-family: "SF-Pro";
 `;
 
 export const InputWrapper = styled.div`
     position: relative;
     display: flex;
     align-items: center;
+    font-family: "SF-Pro";
 `;
 
 export const ValidationIcon = styled.div`
@@ -71,13 +75,15 @@ export const ValidationIcon = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: "SF-Pro";
 `;
 
 export const ErrorMessage = styled.div`
     font-size: 12px;
-    color: #FF4444;
+    color: #ff4444;
     margin-top: 4px;
     padding-left: 4px;
+    font-family: "SF-Pro";
 `;
 
 export const InputLabel = styled.label`
@@ -85,6 +91,7 @@ export const InputLabel = styled.label`
     font-weight: 600;
     color: #333;
     margin-bottom: 8px;
+    font-family: "SF-Pro";
 `;
 
 export const InputField = styled.input`
@@ -96,12 +103,13 @@ export const InputField = styled.input`
     border-radius: 12px;
     font-size: 16px;
     color: #333;
-    
+    font-family: "SF-Pro";
+
     &::placeholder {
         color: #999;
         font-size: 14px;
+        font-family: "SF-Pro";
     }
-
 `;
 export const SubmitButton = styled.button`
     font-family: "SF-Pro";
@@ -115,8 +123,8 @@ export const SubmitButton = styled.button`
     background-color: #007bff;
     border-radius: 16px;
     margin-bottom: 20px;
-    margin-top:30px;
-
+    margin-top: 30px;
+    font-family: "SF-Pro";
 `;
 
 // 기존 컴포넌트명 호환성을 위한 별칭
@@ -129,7 +137,7 @@ export const InputBox = styled(InputContainer)`
         margin-bottom: 8px;
         display: block;
     }
-    
+
     input {
         width: 100%;
         height: 56px;
@@ -139,16 +147,10 @@ export const InputBox = styled(InputContainer)`
         border-radius: 12px;
         font-size: 16px;
         color: #333;
-        
+
         &::placeholder {
             color: #999;
             font-size: 14px;
-        }
-        
-        &:focus {
-            outline: none;
-            background-color: #f0f0f0;
-            box-shadow: 0 0 0 2px rgba(0, 122, 255, 0.2);
         }
     }
 `;
@@ -157,22 +159,24 @@ export const ClickBox = styled(SubmitButton)`
     display: flex;
     align-items: center;
     justify-content: center;
-    
-    div {
+    font-family: "SF-Pro";
 
+    div {
         font-family: "SF Pro";
-    font-size: 17px;
-    font-weight: 500;
-    font-stretch: expanded;
-    color: #007bff;
-    align-self: flex-end;
-    margin-top: auto;
+        font-size: 17px;
+        font-weight: 500;
+        font-stretch: expanded;
+        color: #007bff;
+        align-self: flex-end;
+        margin-top: auto;
+        font-family: "SF-Pro";
     }
 `;
 
 // Signup2용 추가 스타일 컴포넌트들
 export const BlueText = styled.span`
-    color: #007AFF;
+    color: #007aff;
+    font-family: "SF-Pro";
 `;
 
 export const CompanyList = styled.div`
@@ -180,6 +184,7 @@ export const CompanyList = styled.div`
     flex-direction: column;
     gap: 12px;
     margin-bottom: 120px;
+    font-family: "SF-Pro";
 `;
 
 export const CompanyItem = styled.div`
@@ -187,14 +192,15 @@ export const CompanyItem = styled.div`
     align-items: center;
     padding: 16px;
     background-color: #ffffff;
-    border: 2px solid ${props => props.selected ? '#007AFF' : '#f0f0f0'};
+    border: 2px solid ${(props) => (props.selected ? "#007AFF" : "#f0f0f0")};
     border-radius: 12px;
     cursor: pointer;
     transition: all 0.2s ease;
-    
+    font-family: "SF-Pro";
+
     &:hover {
-        border-color: ${props => props.selected ? '#007AFF' : '#ddd'};
-        background-color: ${props => props.selected ? '#f8fbff' : '#f9f9f9'};
+        border-color: ${(props) => (props.selected ? "#007AFF" : "#ddd")};
+        background-color: ${(props) => (props.selected ? "#f8fbff" : "#f9f9f9")};
     }
 `;
 
@@ -202,7 +208,7 @@ export const CompanyLogo = styled.div`
     width: 48px;
     height: 48px;
     border-radius: 12px;
-    background-color: ${props => props.color || '#f0f0f0'};
+    background-color: ${(props) => props.color || "#f0f0f0"};
     display: flex;
     align-items: center;
     justify-content: center;
@@ -216,17 +222,20 @@ export const CompanyInfo = styled.div`
     display: flex;
     flex-direction: column;
     gap: 4px;
+    font-family: "SF-Pro";
 `;
 
 export const CompanyName = styled.div`
     font-size: 16px;
     font-weight: 600;
     color: #333;
+    font-family: "SF-Pro";
 `;
 
 export const CompanyCategory = styled.div`
     font-size: 14px;
     color: #666;
+    font-family: "SF-Pro";
 `;
 
 export const CheckIcon = styled.div`
@@ -236,8 +245,7 @@ export const CheckIcon = styled.div`
     width: 24px;
     height: 24px;
     border-radius: 50%;
-    border: 2px solid ${props => props.selected ? '#007AFF' : '#E0E0E0'};
-    background-color: ${props => props.selected ? '#007AFF' : 'transparent'};
+    border: 2px solid ${(props) => (props.selected ? "#007AFF" : "#E0E0E0")};
+    background-color: ${(props) => (props.selected ? "#007AFF" : "transparent")};
     transition: all 0.2s ease;
 `;
-

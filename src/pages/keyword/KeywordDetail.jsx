@@ -17,7 +17,7 @@ function KeywordDetail() {
 
     // URL 파라미터 또는 state에서 keyword와 segment 가져오기
     const keyword = searchParams.get("keyword") || location.state?.keyword || "";
-    const segment = searchParams.get("segment") || location.state?.segment || "positive";
+    const segment = searchParams.get("segment") || location.state?.segment || "";
 
     // 키워드가 없으면 에러 처리
     if (!keyword) {
@@ -121,7 +121,16 @@ function KeywordDetail() {
 
                     {/* 키워드 타이틀 */}
                     <D.KeywordTitle>
-                        <span className="keyword-label">{getSegmentLabel(keywordData.segment)}</span>
+                        <span
+                            className="keyword-label"
+                            style={{
+                                fontSize: "24px",
+                                fontWeight: "bold",
+                                color: keywordData.segment === "positive" ? "#00c73c;" : "#F5BF28",
+                            }}
+                        >
+                            {getSegmentLabel(keywordData.segment)}
+                        </span>
                         <span className="keyword-divider">|</span>
                         <span className="keyword-name">{keywordData.keyword}</span>
                     </D.KeywordTitle>
