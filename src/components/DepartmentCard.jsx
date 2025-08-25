@@ -1,56 +1,13 @@
 // src/components/DepartmentCard.jsx
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as D from "../styles/components/DepartmentCardStyle";
 import ReviewSummary from "./ReviewSummary";
-import { getReviewSummary } from "../axios/monthly";
 import light from "../assets/images/light.svg";
 
-function DepartmentCard({ id, en }) {
+function DepartmentCard({ id, en, summary, summaryError, report }) {
     const navigate = useNavigate();
-    const departmentId = Number(id); // 문자열일 수 있어 Number로 보정
-
-    const [report, setReport] = useState("");
-    const [isHtml, setIsHtml] = useState(false);
-    const [loading, setLoading] = useState(false);
-    const [err, setErr] = useState("");
-
-    useEffect(() => {
-        if (!Number.isFinite(departmentId) || departmentId <= 0) {
-            setErr("부서 식별자가 유효하지 않습니다.");
-            return;
-        }
-
-        let aborted = false;
-
-        (async () => {
-            try {
-                setLoading(true);
-                setErr("");
-
-                const res = await getReviewSummary(departmentId);
-
-                // ✅ reports 키만 사용
-                const textRaw = res?.data?.reports ?? res?.reports ?? "";
-                const text = String(textRaw).trim();
-                const html = /<\/?[a-z][\s\S]*>/i.test(text); // 단순 HTML 여부 감지
-
-                if (!aborted) {
-                    setReport(text);
-                    setIsHtml(html);
-                }
-            } catch (e) {
-                console.error(e);
-                if (!aborted) setErr("리포트를 불러오지 못했습니다.");
-            } finally {
-                if (!aborted) setLoading(false);
-            }
-        })();
-
-        return () => {
-            aborted = true;
-        };
-    }, [departmentId]);
+    const departmentId = Number(id);
 
     const handleDep = () => navigate(`/department/${departmentId}/detail`);
 
@@ -59,29 +16,32 @@ function DepartmentCard({ id, en }) {
             {/* 부서 영문명 */}
             <D.Title>{en}</D.Title>
 
-            {/* 리뷰 요약(차트/카운트 등) */}
+            {/* 리뷰 요약: 프리패치 summary 주입 → 내부 fetch 스킵 */}
             <D.Review>
-                <ReviewSummary departmentId={departmentId} />
+                {summaryError ? (
+                    <D.AiContent>{summaryError}</D.AiContent>
+                ) : (
+                    <ReviewSummary
+                        departmentId={departmentId}
+                        summary={summary}
+                    />
+                )}
             </D.Review>
 
-            {/* AI 리포트 */}
+            {/* AI 리포트: 프리패치 report 사용 */}
             <D.Ai>
                 <D.AiTitle>
                     <D.AiImg src={light} alt="light" /> AI 부서별 맞춤 리포트
                 </D.AiTitle>
 
-                {loading ? (
-                    <D.AiContent>리포트 불러오는 중...</D.AiContent>
-                ) : err ? (
-                    <D.AiContent>{err}</D.AiContent>
+                {summaryError ? (
+                    <D.AiContent>{summaryError}</D.AiContent>
                 ) : report ? (
-                    isHtml ? (
-                        // 서버가 HTML 문자열을 줄 때
+                    /<\/?[a-z][\s\S]*>/i.test(String(report)) ? (
                         <D.AiContent
                             dangerouslySetInnerHTML={{ __html: report }}
                         />
                     ) : (
-                        // 일반 텍스트일 때
                         <D.AiContent>{report}</D.AiContent>
                     )
                 ) : (
