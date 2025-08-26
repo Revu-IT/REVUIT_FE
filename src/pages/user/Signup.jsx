@@ -84,10 +84,10 @@ function Signup() {
         }
 
         // API URL
-        const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
-        const signupUrl = `${apiUrl}/user/signup`;
+        //const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+        //const signupUrl = `${apiUrl}/user/signup`;
         // 프록시 사용 시:
-        // const signupUrl = `/api/user/signup`;
+        const signupUrl = `/api/user/signup`;
 
         try {
             const response = await axios.post(
