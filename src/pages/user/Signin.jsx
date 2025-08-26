@@ -26,10 +26,10 @@ function Signin() {
         }
 
         // API URL
-        // const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
-        // const loginUrl = `${apiUrl}/user/login`;
+        const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+        const loginUrl = `${apiUrl}/user/login`;
         //프록시 사용 시:
-        const loginUrl = `/api/user/login`;
+        //const loginUrl = `/api/user/login`;
 
         try {
             console.log("로그인 요청:", { email, password });
@@ -76,9 +76,7 @@ function Signin() {
                     // 서버에서 응답이 온 경우
                     const status = error.response.status;
                     const message =
-                        error.response.data?.detail ||
-                        error.response.data?.message ||
-                        "로그인에 실패했습니다.";
+                        error.response.data?.detail || error.response.data?.message || "로그인에 실패했습니다.";
 
                     console.log("서버 에러 응답:", error.response.data);
 
@@ -93,9 +91,7 @@ function Signin() {
                     }
                 } else if (error.request) {
                     console.log("요청 실패:", error.request);
-                    alert(
-                        "서버에 연결할 수 없습니다. CORS 설정을 확인해주세요."
-                    );
+                    alert("서버에 연결할 수 없습니다. CORS 설정을 확인해주세요.");
                 }
             } else {
                 alert("알 수 없는 오류가 발생했습니다.");
@@ -136,9 +132,7 @@ function Signin() {
                                             type="email"
                                             placeholder="abc@email.com"
                                             value={email}
-                                            onChange={(e) =>
-                                                setEmail(e.target.value)
-                                            }
+                                            onChange={(e) => setEmail(e.target.value)}
                                             disabled={isLoading}
                                         />
                                     </C.InputWrapper>
@@ -151,9 +145,7 @@ function Signin() {
                                             type="password"
                                             placeholder="비밀번호를 입력해주세요"
                                             value={password}
-                                            onChange={(e) =>
-                                                setPassword(e.target.value)
-                                            }
+                                            onChange={(e) => setPassword(e.target.value)}
                                             disabled={isLoading}
                                         />
                                     </C.InputWrapper>
@@ -164,9 +156,7 @@ function Signin() {
                                     disabled={isLoading}
                                     style={{
                                         opacity: isLoading ? 0.6 : 1,
-                                        cursor: isLoading
-                                            ? "not-allowed"
-                                            : "pointer",
+                                        cursor: isLoading ? "not-allowed" : "pointer",
                                     }}
                                 >
                                     {isLoading ? "로그인 중..." : "로그인"}
