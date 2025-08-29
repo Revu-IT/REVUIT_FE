@@ -1,5 +1,5 @@
 export async function handler(event) {
-    const baseUrl = process.env.VITE_REACT_APP_API_URL; // Netlify에 등록된 값
+    const baseUrl = VITE_REACT_APP_API_URL; // Netlify에 등록된 값
 
     if (!baseUrl) {
         return { statusCode: 500, body: "API URL not configured" };
