@@ -1,14 +1,9 @@
 // src/axios/instance.js
 import axios from "axios";
-import {
-    getAccessToken,
-    getRefreshToken,
-    setCookie,
-    removeCookie,
-} from "./token";
+import { getAccessToken, getRefreshToken, setCookie, removeCookie } from "./token";
 
 const api = axios.create({
-    baseURL: "/api", // ← Vite 프록시
+    baseURL: "/", // ← Vite 프록시
     headers: { "Content-Type": "application/json" },
     // withCredentials: true, // 쿠키 인증이면 켜고, 지금은 Bearer 헤더 방식이니 불필요
 });
@@ -63,11 +58,7 @@ api.interceptors.response.use(
                     refresh_token: refreshToken,
                 });
 
-                const {
-                    access_token,
-                    token_type = "Bearer",
-                    expires_in = 3600,
-                } = refreshRes.data || {};
+                const { access_token, token_type = "Bearer", expires_in = 3600 } = refreshRes.data || {};
                 const newAuth = `${token_type} ${access_token}`;
 
                 // 새 토큰 저장 & 큐 처리
