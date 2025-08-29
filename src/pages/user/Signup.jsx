@@ -133,17 +133,22 @@ function Signup() {
         }
     };*/
         try {
-            const data = await signupUser({
+            const response = await signupUser({
                 email,
                 password,
                 password_confirm,
                 company_id: selectedCompanyData.company_id,
             });
 
-            // 성공 처리
-            setCookie("authToken", data.authToken, { path: "/" });
-            alert(data.message || "회원가입이 완료되었습니다!");
-            navigate("/signin");
+            console.log("서버 응답:", response);
+
+            if (response.status === 201) {
+                setCookie("authToken", response.data.authToken, { path: "/" });
+                alert(response.data.message || "회원가입이 완료되었습니다!");
+                navigate("/signin");
+            } else {
+                alert(`회원가입 실패: ${response.data.message || "알 수 없는 오류"}`);
+            }
         } catch (error) {
             console.error("회원가입 실패:", error);
             alert(error.response?.data?.message || "회원가입 실패: 네트워크 오류가 발생했습니다.");
