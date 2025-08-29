@@ -10,8 +10,8 @@ export const signupUser = async ({ email, password, password_confirm, company_id
             company_id,
         },
         {
-            withCredentials: true, // ✅ 누락된 부분 추가
+            withCredentials: true, // ✅ 옵션 유지
         }
     );
-    return res; // ✅ 전체 응답 반환 (status + data)
+    return res; // ✅ 응답 전체 반환 (status + data 모두 확인 가능)
 };

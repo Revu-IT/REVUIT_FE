@@ -90,48 +90,6 @@ function Signup() {
         // 프록시 사용 시:
         //const signupUrl = `/api/user/signup`;
 
-        /*try {
-            const response = await axios.post(
-                signupUrl,
-                {
-                    email,
-                    password,
-                    password_confirm,
-                    company_id: selectedCompanyData.company_id,
-                },
-                {
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    withCredentials: true, // CORS 쿠키 전송을 위해
-                }
-            );
-
-            console.log("서버 응답:", response);
-
-            if (response.status === 201) {
-                setCookie("authToken", response.data.authToken, { path: "/" });
-                alert(response.data.message || "회원가입이 완료되었습니다!");
-                navigate("/signin");
-            } else {
-                alert(`회원가입 실패: ${response.data.message || "알 수 없는 오류"}`);
-            }
-        } catch (error) {
-            console.error("회원가입 실패:", error);
-
-            if (axios.isAxiosError(error)) {
-                console.log("Axios config:", error.config);
-                console.log("Axios request:", error.request);
-                console.log("Axios response:", error.response);
-            }
-
-            if (error.response && error.response.data && error.response.data.message) {
-                alert(`회원가입 실패: ${error.response.data.message}`);
-            } else {
-                alert("회원가입 실패: 네트워크 오류가 발생했습니다.");
-            }
-        }
-    };*/
         try {
             const response = await signupUser({
                 email,
@@ -154,7 +112,6 @@ function Signup() {
             alert(error.response?.data?.message || "회원가입 실패: 네트워크 오류가 발생했습니다.");
         }
     };
-
     // Step 1 렌더링
     const renderStep1 = () => (
         <C.Page>
