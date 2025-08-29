@@ -26,10 +26,10 @@ function Signin() {
         }
 
         //API URL
-        const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
-        const loginUrl = `${apiUrl}/user/login`;
+        //const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
+        //const loginUrl = `${apiUrl}/user/login`;
         //프록시 사용 시:
-        //const loginUrl = `/api/user/login`;
+        const loginUrl = `/api/user/login`;
 
         try {
             console.log("로그인 요청:", { email, password });

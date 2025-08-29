@@ -1,4 +1,4 @@
 [[redirects]]
-  from = "/*"
-  to = "/index.html"
+  from = "/api/*"
+  to = "http://15.165.84.55:8000/:splat"
   status = 200
