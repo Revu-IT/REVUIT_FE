@@ -10,6 +10,7 @@ import { companyMap } from "../../utils/companyMap";
 import checkValid from "../../assets/images/checkmark_valid.svg";
 import deleteValid from "../../assets/images/delete_valid.svg";
 import checkSelected from "../../assets/images/checkmark_selected.svg";
+import { signupUser } from "../../axios/signupaxios"; // ✅ 분리된 API 호출
 
 function Signup() {
     const navigate = useNavigate();
@@ -87,9 +88,9 @@ function Signup() {
         //const apiUrl = import.meta.env.VITE_REACT_APP_API_URL;
         //const signupUrl = `${apiUrl}/user/signup`;
         // 프록시 사용 시:
-        const signupUrl = `/api/user/signup`;
+        //const signupUrl = `/api/user/signup`;
 
-        try {
+        /*try {
             const response = await axios.post(
                 signupUrl,
                 {
@@ -129,6 +130,23 @@ function Signup() {
             } else {
                 alert("회원가입 실패: 네트워크 오류가 발생했습니다.");
             }
+        }
+    };*/
+        try {
+            const data = await signupUser({
+                email,
+                password,
+                password_confirm,
+                company_id: selectedCompanyData.company_id,
+            });
+
+            // 성공 처리
+            setCookie("authToken", data.authToken, { path: "/" });
+            alert(data.message || "회원가입이 완료되었습니다!");
+            navigate("/signin");
+        } catch (error) {
+            console.error("회원가입 실패:", error);
+            alert(error.response?.data?.message || "회원가입 실패: 네트워크 오류가 발생했습니다.");
         }
     };
 
