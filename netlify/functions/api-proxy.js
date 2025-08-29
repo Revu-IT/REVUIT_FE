@@ -1,8 +1,12 @@
 export async function handler(event) {
-    const baseUrl = VITE_REACT_APP_API_URL; // Netlify에 등록된 값
+    // Netlify 환경 변수 읽기
+    const baseUrl = process.env.VITE_REACT_APP_API_URL;
 
     if (!baseUrl) {
-        return { statusCode: 500, body: "API URL not configured" };
+        return {
+            statusCode: 500,
+            body: JSON.stringify({ error: "API URL not configured" }),
+        };
     }
 
     const path = event.path.replace("/.netlify/functions/api-proxy", "");
@@ -17,6 +21,8 @@ export async function handler(event) {
     return {
         statusCode: response.status,
         body: await response.text(),
-        headers: { "Content-Type": response.headers.get("content-type") || "application/json" },
+        headers: {
+            "Content-Type": response.headers.get("content-type") || "application/json",
+        },
     };
 }
