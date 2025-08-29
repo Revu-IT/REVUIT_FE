@@ -1,4 +1,16 @@
 [[redirects]]
+  from = "/proxy/*"
+  to = "https://15.165.84.55:8000/:splat"
+  status = 200
+  force = true
+  
+[[redirects]]
   from = "/api/*"
-  to = "http://15.165.84.55:8000/:splat"
+  to = "carely-backend.site/:splat"
+  status = 200
+  force = true
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
   status = 200
