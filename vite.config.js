@@ -6,10 +6,9 @@ export default defineConfig({
     server: {
         proxy: {
             "/api": {
-                target: "http://15.165.84.55:8000",
+                target: "https://carely-backend.site",
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, ""),
-                secure: false,
             },
         },
     },

@@ -2,20 +2,21 @@
 import axios from "axios";
 import { getAccessToken, getRefreshToken, setCookie, removeCookie } from "./token";
 
+// ✅ baseURL을 /api로 맞춤 → Vite dev 서버 프록시 사용 가능
 const api = axios.create({
-    baseURL: "/", // ← Vite 프록시
+    baseURL: "/api",
     headers: { "Content-Type": "application/json" },
-    // withCredentials: true, // 쿠키 인증이면 켜고, 지금은 Bearer 헤더 방식이니 불필요
+    // withCredentials: true, // 쿠키 인증 필요 시 사용
 });
 
 // 1) 요청 인터셉터: Authorization 자동 첨부
 api.interceptors.request.use((config) => {
-    const token = getAccessToken(); // 네 코드에 맞춰 "Bearer xxx" 형태가 쿠키에 저장됨
+    const token = getAccessToken(); // "Bearer xxx" 형태
     if (token) config.headers.Authorization = token;
     return config;
 });
 
-// 2) 응답 인터셉터: 401이면 한 번만 리프레시 시도 후 재요청
+// 2) 응답 인터셉터: 401이면 리프레시 후 재요청
 let isRefreshing = false;
 let pendingQueue = [];
 
@@ -36,11 +37,9 @@ api.interceptors.response.use(
         const { response, config } = error;
         if (!response) return Promise.reject(error);
 
-        // 인증 실패
         if (response.status === 401 && !config._retry) {
             config._retry = true;
 
-            // 이미 리프레시 중이면 큐에 쌓고 리턴
             if (isRefreshing) {
                 return new Promise((resolve, reject) => {
                     pendingQueue.push({ resolve, reject, config });
@@ -53,7 +52,7 @@ api.interceptors.response.use(
                 const refreshToken = getRefreshToken();
                 if (!refreshToken) throw error;
 
-                // 주의: 여기서는 기본 axios 사용(무한루프 방지). 프록시 경로 그대로 사용.
+                // 기본 axios 사용 → 프록시 포함
                 const refreshRes = await axios.post("/api/user/refresh", {
                     refresh_token: refreshToken,
                 });
@@ -66,9 +65,8 @@ api.interceptors.response.use(
                 config.headers.Authorization = newAuth;
 
                 processQueue(null, newAuth);
-                return api(config); // 실패했던 요청 재시도
+                return api(config);
             } catch (e) {
-                // 리프레시 실패 → 토큰 정리
                 removeCookie("accessToken");
                 removeCookie("refreshToken");
                 processQueue(e);
