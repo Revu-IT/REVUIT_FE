@@ -2,11 +2,9 @@
 import axios from "axios";
 import { getAccessToken, getRefreshToken, setCookie, removeCookie } from "./token";
 
-// ✅ baseURL을 /api로 맞춤 → Vite dev 서버 프록시 사용 가능
 const api = axios.create({
-    baseURL: "/api",
+    baseURL: import.meta.env.VITE_REACT_APP_API_URL + "/api",
     headers: { "Content-Type": "application/json" },
-    // withCredentials: true, // 쿠키 인증 필요 시 사용
 });
 
 // 1) 요청 인터셉터: Authorization 자동 첨부

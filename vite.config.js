@@ -6,7 +6,7 @@ export default defineConfig({
     server: {
         proxy: {
             "/api": {
-                target: "https://carely-backend.site",
+                target: process.env.VITE_REACT_APP_API_URL, // ✅ env 사용
                 changeOrigin: true,
                 rewrite: (path) => path.replace(/^\/api/, ""),
             },
