@@ -3,7 +3,7 @@ import axios from "axios";
 import { getAccessToken, getRefreshToken, setCookie, removeCookie } from "./token";
 
 const api = axios.create({
-    baseURL: import.meta.env.VITE_REACT_APP_API_URL,
+    baseURL: "/api", // 프록시 경로
     headers: { "Content-Type": "application/json" },
 });
 
