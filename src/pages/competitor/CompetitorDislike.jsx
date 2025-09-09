@@ -30,9 +30,7 @@ function CompetitorDislike() {
 
                 const response = await fetch(`/api/analyze/scores/ranking`);
                 if (!response.ok) {
-                    throw new Error(
-                        `HTTP ${response.status}: 데이터를 불러오는데 실패했습니다.`
-                    );
+                    throw new Error(`HTTP ${response.status}: 데이터를 불러오는데 실패했습니다.`);
                 }
 
                 const result = await response.json();
@@ -61,9 +59,7 @@ function CompetitorDislike() {
             } catch (err) {
                 console.error("❌ 싫어요 랭킹 데이터 로드 실패:", err);
                 if (!aborted) {
-                    setPageError(
-                        err?.message || "데이터를 불러오지 못했습니다."
-                    );
+                    setPageError(err?.message || "데이터를 불러오지 못했습니다.");
                     setRankings([]);
                 }
             } finally {
@@ -80,6 +76,9 @@ function CompetitorDislike() {
         <C.Page>
             <C.Center>
                 <C.PageSpace>
+                    <C.FixedHeaderWrapper>
+                        <Header Title="경쟁사 분석" />
+                    </C.FixedHeaderWrapper>
                     {/* ✅ 페이지 전체 게이트: 로딩/에러 동안 헤더 포함 가림 */}
                     {pageLoading ? (
                         <div
@@ -110,9 +109,6 @@ function CompetitorDislike() {
                     ) : (
                         <>
                             {/* ✅ 로딩 완료 후 전체 렌더 */}
-                            <C.FixedHeaderWrapper>
-                                <Header Title="경쟁사 분석" />
-                            </C.FixedHeaderWrapper>
 
                             <L.Like>
                                 <L.Emoji>
@@ -121,53 +117,33 @@ function CompetitorDislike() {
 
                                 <L.Container>
                                     <L.Title>
-                                        <span style={{ color: "#F5BF28" }}>
-                                            싫어요👎{" "}
-                                        </span>
+                                        <span style={{ color: "#F5BF28" }}>싫어요👎 </span>
                                         가 많은 앱<br />
                                         top 5
                                     </L.Title>
                                     <L.Date>오늘 09:00 기준</L.Date>
-                                    <L.Subtitle>
-                                        경쟁사들과 ’싫어요’순위를 비교했어요.
-                                    </L.Subtitle>
+                                    <L.Subtitle>경쟁사들과 ’싫어요’순위를 비교했어요.</L.Subtitle>
                                 </L.Container>
 
                                 <L.Line />
 
                                 <L.RankingList>
                                     {rankings.map((item) => {
-                                        const company =
-                                            companyMap[item.companyId];
+                                        const company = companyMap[item.companyId];
                                         if (!company) return null;
                                         return (
                                             <L.RankingItem key={item.rank}>
-                                                <L.RankNumberBad
-                                                    rank={item.rank}
-                                                >
-                                                    {item.rank}
-                                                </L.RankNumberBad>
+                                                <L.RankNumberBad rank={item.rank}>{item.rank}</L.RankNumberBad>
                                                 <L.CompanyInfo>
                                                     <L.CompanyLogo>
-                                                        <img
-                                                            src={company.logo}
-                                                            alt={
-                                                                company.display
-                                                            }
-                                                        />
+                                                        <img src={company.logo} alt={company.display} />
                                                     </L.CompanyLogo>
                                                     <L.CompanyDetails>
-                                                        <L.CompanyName>
-                                                            {company.display}
-                                                        </L.CompanyName>
-                                                        <L.CompanyCategory>
-                                                            {item.category}
-                                                        </L.CompanyCategory>
+                                                        <L.CompanyName>{company.display}</L.CompanyName>
+                                                        <L.CompanyCategory>{item.category}</L.CompanyCategory>
                                                     </L.CompanyDetails>
                                                 </L.CompanyInfo>
-                                                <L.Rating>
-                                                    {item.rating}
-                                                </L.Rating>
+                                                <L.Rating>{item.rating}</L.Rating>
                                             </L.RankingItem>
                                         );
                                     })}

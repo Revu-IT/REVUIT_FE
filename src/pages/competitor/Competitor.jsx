@@ -2,6 +2,9 @@ import React from "react";
 import * as C from "../../styles/CommonStyle";
 import * as L from "../../styles/competitor/CompetitorLikeStyles";
 import { useNavigate } from "react-router-dom";
+import Group30 from "../../assets/images/Group 30.png";
+import Group32 from "../../assets/images/Group 32.png";
+import keywonder from "../../assets/images/keywonder.svg";
 
 import Header from "../../components/Header";
 
@@ -23,18 +26,9 @@ function Competitor() {
                     <C.PageSpace>
                         <Header Title="경쟁사 분석" />
                         <L.Con>
-                            <img
-                                src="/src/assets/images/Group 30.png"
-                                onClick={handleLike}
-                            />
-                            <img
-                                src="/src/assets/images/Group 32.png"
-                                onClick={handleDislike}
-                            />
-                            <img
-                                src="/src/assets/images/keywonder.svg"
-                                onClick={handleKeyword}
-                            />
+                            <img src={Group30} onClick={handleLike} />
+                            <img src={Group32} onClick={handleDislike} />
+                            <img src={keywonder} onClick={handleKeyword} />
                         </L.Con>
                     </C.PageSpace>
                 </C.Center>

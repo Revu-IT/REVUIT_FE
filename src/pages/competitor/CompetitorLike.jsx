@@ -15,8 +15,7 @@ function CompetitorLike() {
     const [pageError, setPageError] = useState("");
 
     // ✅ 이름 정규화 + 빠른 매핑 인덱스
-    const normalize = (s) =>
-        (s || "").toString().trim().toLowerCase().replace(/\s+/g, "");
+    const normalize = (s) => (s || "").toString().trim().toLowerCase().replace(/\s+/g, "");
     const nameIndex = React.useMemo(() => {
         const idx = {};
         Object.entries(companyMap).forEach(([id, c]) => {
@@ -26,8 +25,7 @@ function CompetitorLike() {
         return idx;
     }, []);
 
-    const getCompanyIdByName = (companyName) =>
-        nameIndex[normalize(companyName)] ?? null;
+    const getCompanyIdByName = (companyName) => nameIndex[normalize(companyName)] ?? null;
 
     useEffect(() => {
         let aborted = false;
@@ -41,11 +39,7 @@ function CompetitorLike() {
                 const res = await api.get("/analyze/scores/ranking");
 
                 // ✅ 응답 형태 방어: {data: [...]} 또는 [...] 모두 허용
-                const rows = Array.isArray(res.data?.data)
-                    ? res.data.data
-                    : Array.isArray(res.data)
-                    ? res.data
-                    : [];
+                const rows = Array.isArray(res.data?.data) ? res.data.data : Array.isArray(res.data) ? res.data : [];
 
                 if (!rows.length) {
                     throw new Error("랭킹 데이터가 비어 있습니다.");
@@ -67,9 +61,7 @@ function CompetitorLike() {
                     // ✅ 매칭 실패한 항목 추적 (디버깅용 로그)
                     .filter((x) => {
                         if (x.companyId === null) {
-                            console.warn(
-                                `[매칭 실패] company_name='${x.companyName}' → companyMap에 없음`
-                            );
+                            console.warn(`[매칭 실패] company_name='${x.companyName}' → companyMap에 없음`);
                             return false;
                         }
                         return true;
@@ -82,18 +74,14 @@ function CompetitorLike() {
 
                 if (!formatted.length) {
                     // 매칭 실패로 모두 걸러졌을 가능성
-                    throw new Error(
-                        "표시 가능한 랭킹 데이터가 없습니다. (회사명 매칭 실패)"
-                    );
+                    throw new Error("표시 가능한 랭킹 데이터가 없습니다. (회사명 매칭 실패)");
                 }
 
                 setRankings(formatted);
             } catch (err) {
                 console.error("랭킹 데이터 로드 실패:", err);
                 if (!aborted) {
-                    setPageError(
-                        err?.message || "데이터를 불러오지 못했습니다."
-                    );
+                    setPageError(err?.message || "데이터를 불러오지 못했습니다.");
                     setRankings([]);
                 }
             } finally {
@@ -154,57 +142,33 @@ function CompetitorLike() {
                                         top 5
                                     </L.Title>
                                     <L.Date>오늘 09:00 기준</L.Date>
-                                    <L.Subtitle>
-                                        경쟁사들과 ’좋아요’순위를 비교했어요.
-                                    </L.Subtitle>
+                                    <L.Subtitle>경쟁사들과 ’좋아요’순위를 비교했어요.</L.Subtitle>
                                 </L.Container>
 
                                 <L.Line />
 
                                 {/* ✅ 빈 배열 대비 안내 */}
                                 {!rankings.length ? (
-                                    <C.ErrorCard>
-                                        표시할 랭킹이 없습니다.
-                                    </C.ErrorCard>
+                                    <C.ErrorCard>표시할 랭킹이 없습니다.</C.ErrorCard>
                                 ) : (
                                     <L.RankingList>
                                         {rankings.map((item) => {
-                                            const company =
-                                                companyMap[item.companyId];
+                                            const company = companyMap[item.companyId];
                                             if (!company) return null;
 
                                             return (
                                                 <L.RankingItem key={item.rank}>
-                                                    <L.RankNumber
-                                                        rank={item.rank}
-                                                    >
-                                                        {item.rank}
-                                                    </L.RankNumber>
+                                                    <L.RankNumber rank={item.rank}>{item.rank}</L.RankNumber>
                                                     <L.CompanyInfo>
                                                         <L.CompanyLogo>
-                                                            <img
-                                                                src={
-                                                                    company.logo
-                                                                }
-                                                                alt={
-                                                                    company.display
-                                                                }
-                                                            />
+                                                            <img src={company.logo} alt={company.display} />
                                                         </L.CompanyLogo>
                                                         <L.CompanyDetails>
-                                                            <L.CompanyName>
-                                                                {
-                                                                    company.display
-                                                                }
-                                                            </L.CompanyName>
-                                                            <L.CompanyCategory>
-                                                                {item.category}
-                                                            </L.CompanyCategory>
+                                                            <L.CompanyName>{company.display}</L.CompanyName>
+                                                            <L.CompanyCategory>{item.category}</L.CompanyCategory>
                                                         </L.CompanyDetails>
                                                     </L.CompanyInfo>
-                                                    <L.Rating>
-                                                        {item.rating}
-                                                    </L.Rating>
+                                                    <L.Rating>{item.rating}</L.Rating>
                                                 </L.RankingItem>
                                             );
                                         })}

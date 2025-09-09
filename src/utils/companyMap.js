@@ -6,8 +6,8 @@ import temuLogo from "../assets/images/temu.svg";
 
 export const companyMap = {
     1: { name: "coupang", display: "쿠팡", logo: coupangLogo },
-    2: { name: "aliexpress", display: "알리익스프레스", logo: aliLogo },
-    3: { name: "gmarket", display: "지마켓", logo: gmarketLogo },
+    2: { name: "aliexpress", display: "알리", logo: aliLogo },
+    3: { name: "gmarket", display: "G마켓", logo: gmarketLogo },
     4: { name: "11st", display: "11번가", logo: elevenLogo },
     5: { name: "temu", display: "테무", logo: temuLogo },
 };

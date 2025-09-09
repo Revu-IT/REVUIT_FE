@@ -28,7 +28,13 @@ export async function handler(event, context) {
     if (path.startsWith("/api")) {
         path = path.replace("/api", "");
     }
-    const targetUrl = `${baseUrl}${path}`;
+
+    // 쿼리 파라미터 추가
+    const queryString = event.queryStringParameters
+        ? "?" + new URLSearchParams(event.queryStringParameters).toString()
+        : "";
+
+    const targetUrl = `${baseUrl}${path}${queryString}`;
 
     console.log("Target URL:", targetUrl);
 
