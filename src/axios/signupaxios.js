@@ -1,6 +1,11 @@
 import api from "./instance";
 
-export const signupUser = async ({ email, password, password_confirm, company_id }) => {
+export const signupUser = async ({
+    email,
+    password,
+    password_confirm,
+    company_id,
+}) => {
     const res = await api.post(
         "/user/signup",
         {

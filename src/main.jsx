@@ -3,13 +3,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { CookiesProvider } from "react-cookie";
+import { registerSW } from "virtual:pwa-register";
 import "./index.css";
 import App from "./App";
-import * as serviceWorkerRegistration from "./serviceWorkerRegistration";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
     <React.StrictMode>
-        <BrowserRouter basename={import.meta.env.BASE_URL}>
+        {/* Netlify 루트 배포면 basename 없이 사용하는 게 가장 안전 */}
+        <BrowserRouter>
             <CookiesProvider>
                 <App />
             </CookiesProvider>
@@ -17,5 +18,13 @@ ReactDOM.createRoot(document.getElementById("root")).render(
     </React.StrictMode>
 );
 
-// Vite 호환 register()는 내부에서 import.meta.env.PROD를 체크하므로 그냥 호출해도 안전
-serviceWorkerRegistration.register();
+// 서비스워커 등록
+registerSW({
+    immediate: true,
+    onNeedRefresh() {
+        if (confirm("새 버전이 있습니다. 새로고침할까요?")) location.reload();
+    },
+    onOfflineReady() {
+        console.log("오프라인 준비 완료");
+    },
+});
