@@ -4,7 +4,8 @@ import react from "@vitejs/plugin-react";
 import { VitePWA } from "vite-plugin-pwa";
 
 export default defineConfig(({ mode }) => {
-    const env = loadEnv(mode, process.cwd(), ""); // VITE_* 만 노출
+    // ✅ process.cwd() 대신 '.' 사용
+    const env = loadEnv(mode, ".", ""); // VITE_*만 노출
 
     return {
         plugins: [
@@ -68,7 +69,6 @@ export default defineConfig(({ mode }) => {
         server: {
             proxy: {
                 "/api": {
-                    // ✅ 개발 전용 프록시: .env.development 의 VITE_REACT_APP_API_URL 사용
                     target: env.VITE_REACT_APP_API_URL,
                     changeOrigin: true,
                     rewrite: (p) => p.replace(/^\/api/, ""),
